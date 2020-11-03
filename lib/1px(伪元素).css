@@ -1,0 +1,108 @@
+.mx-1px {
+    position: relative
+}
+.mx-1px:before {
+    position: absolute;
+    content: "";
+    width: 100%;
+    height: 100%;
+    border: 1px solid #ccc;
+    border-radius: 0;
+    top: 0;
+    left: 0;
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    box-sizing: border-box
+}
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+    .mx-1px:before {
+        width: 200%;
+        height: 200%;
+        -webkit-transform: scale(.5);
+        transform: scale(.5)
+    }
+}
+/* 上边框 */
+.mx-1px-top {
+    position: relative
+}
+.mx-1px-top:before {
+    position: absolute;
+    content: "";
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    width: 100%;
+    height: 1px;
+    border-top: 1px solid #ccc;
+    top: 0;
+    left: 0
+}
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+    .mx-1px-top:before {
+        -webkit-transform: scaleY(.5);
+        transform: scaleY(.5)
+    }
+}
+/* 下边框 */
+.mx-1px-bottom {
+    position: relative
+}
+.mx-1px-bottom:before {
+    position: absolute;
+    content: "";
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px solid #ccc;
+    bottom: -1px;
+    left: 0
+}
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+    .mx-1px-bottom:before {
+        -webkit-transform: scaleY(.5);
+        transform: scaleY(.5)
+    }
+}
+/* 左边框 */
+.mx-1px-bottom {
+    position: relative
+}
+.mx-1px-bottom:before {
+    position: absolute;
+    content: "";
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    width: 1px;
+    height: 100%;
+    border-left: 1px solid #ccc;
+    top: 0;
+    left: 0
+}
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+    .mx-1px-bottom:before {
+        -webkit-transform: scaleX(.5);
+        transform: scaleX(.5)
+    }
+}
+/* 右边框 */
+.mx-1px-bottom {
+    position: relative
+}
+.mx-1px-bottom:before {
+    position: absolute;
+    content: "";
+    -webkit-transform-origin: 0 0;
+    transform-origin: 0 0;
+    width: 1px;
+    height: 100%;
+    border-right: 1px solid #ccc;
+    top: 0;
+    right: -1px
+}
+@media screen and (-webkit-min-device-pixel-ratio: 2) {
+    .mx-1px-bottom:before {
+        -webkit-transform: scaleX(.5);
+        transform: scaleX(.5)
+    }
+}

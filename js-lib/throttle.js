@@ -15,9 +15,10 @@ function throttle(fn, delay) {
     let timer = null;
     return function() {
         let args = arguments;
+        let context = this;
         if(!timer) {
             timer = setTimeout(()=> {
-                fn.apply(context,args)
+                fn.apply(context, args)
                 clearTimeout(timer)
                 timer = null;
             }, delay)
@@ -32,6 +33,17 @@ throttle = (fn, delay) => {
         if(now > last + delay) {
             last = now;
             fn.apply(this, args)
+        }
+    }
+};
+
+function throttle(fn, delay){
+    let canUse = true
+    return function(){
+        if(canUse){
+            fn.apply(this, arguments)
+            canUse = false
+            setTimeout(()=>canUse = true, delay)
         }
     }
 };

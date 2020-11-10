@@ -23,3 +23,24 @@ function deepClone2(obj) {
  * 缺点2：对象存在循环引用也无法深拷贝
  * 缺点3：只能序列化对象的可枚举的自有属性
  */
+
+function deepClone(target) {
+    if(typeof target === 'object') {
+        let cloneTarget = Array.isArray(target) ? [] : {};
+        if(map.get(target)) {
+            return Map.get(target)
+        }
+        map.set(target, cloneTarget)
+        for(const key in target) {
+            cloneTarget[key] = deepClone(target[key]);
+        }
+        return cloneTarget;
+    } else {
+        return target;
+    }
+}
+
+//递归
+//判断类型
+//循环引用
+//忽略原型

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .square {
+            width: 400px;
+            height: 400px;
+            border: 2px solid black;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            flex-direction: column;
+        }
+        .circular {
+            height: 100px;
+            width: 100px;
+            border-radius: 50%;
+            background-color: aqua;
+        }
+        .bottom {
+            margin: 25px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="square">
+        <div class="circular"></div>
+        <div class="circular bottom"></div>
+    </div>
+</body>
+</html>
+
+2. 析构赋值
+3. EventLoop
+4. async await
+async function f1() {
+    return 'hello world'
+}
+async函数返回一个 Promise 对象。
+async函数内部return语句返回的值，会成为then方法回调函数的参数。
+async函数内部抛出错误，会导致返回的 Promise 对象变为reject状态。抛出的错误对象会被catch方法回调函数接收到。
+
+async function f1() {
+    return await 'hello world'
+}
+正常情况下，await命令后面是一个 Promise 对象，返回该对象的结果。
+如果不是 Promise 对象，就直接返回对应的值。
+另一种情况是，await命令后面是一个thenable对象（即定义了then方法的对象），那么await会将其等同于 Promise 对象。

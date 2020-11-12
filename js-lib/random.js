@@ -40,3 +40,60 @@ Object.keys()
 
 hasOwnProperty()
 prototype.isPrototypeOf()
+
+
+function Animal() { }
+
+Animal.prototype = {
+  constructor: Animal,
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
+
+
+// Inherit Behaviors from a Supertype
+function Animal() { }
+
+Animal.prototype = {
+  constructor: Animal,
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
+
+let duck = Object.create(Animal.prototype); 
+let beagle = Object.create(Animal.prototype);
+
+
+//Set the Child's Prototype to an Instance of the ParentPassed
+function Animal() { }
+
+Animal.prototype = {
+  constructor: Animal,
+  eat: function() {
+    console.log("nom nom nom");
+  }
+};
+
+function Dog() { }
+
+Dog.prototype = Object.create(Animal.prototype)
+
+let beagle = new Dog();
+
+
+//Reset an Inherited Constructor Property
+function Animal() { }
+function Bird() { }
+function Dog() { }
+
+Bird.prototype = Object.create(Animal.prototype);
+Dog.prototype = Object.create(Animal.prototype);
+
+Bird.prototype.constructor = Bird
+Dog.prototype.constructor = Dog
+
+let duck = new Bird();
+let beagle = new Dog();
+

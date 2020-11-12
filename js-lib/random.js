@@ -97,3 +97,31 @@ Dog.prototype.constructor = Dog
 let duck = new Bird();
 let beagle = new Dog();
 
+
+//Add Methods After InheritancePassed
+function Animal() { }
+Animal.prototype.eat = function() { console.log("nom nom nom"); };
+
+function Dog() { }
+Dog.prototype = Object.create(Animal.prototype)
+Dog.prototype.constructor = Dog
+Dog.prototype.bark = function() {
+    console.log("Woof!")
+}
+
+let beagle = new Dog();
+
+
+//Override Inherited Methods
+function Bird() { }
+Bird.prototype.fly = function() { return "I am flying!"; };
+
+function Penguin() { }
+Penguin.prototype = Object.create(Bird.prototype);
+Penguin.prototype.constructor = Penguin;
+Penguin.prototype.fly = function() {
+    return "Alas, this is a flightless bird."
+}
+
+let penguin = new Penguin();
+console.log(penguin.fly());

@@ -1,3 +1,20 @@
+/**
+ * split
+ * charAt
+ * toLowerCase toUpperCase
+ * slice
+ * indexOf
+ * substring
+ * substr
+ * replace
+ * concat
+ * trim
+ */
+
+
+
+
+
 const str = "The quick brown fox jumped over the lazy dog"
 
 
@@ -48,3 +65,23 @@ function truncateString(str, num) {
     return str
   }
   console.log(truncateString(str, 8))
+
+
+
+/**
+ * arr[1]应该全部包括在arr[0]中，否则返回false，忽略大小写
+ * @param {*} arr 
+ */
+
+  function mutation(arr) {
+    let str1 = arr[0].toLowerCase()
+    let str2 = arr[1].toLowerCase()
+    for(let i=0; i<str2.length; i++) {
+      if(str1.indexOf(str2[i]) === -1) {
+        return false
+      }
+    }
+    return true
+  }
+  
+  mutation(["hello", "hey"]);

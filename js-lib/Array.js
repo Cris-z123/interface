@@ -1,17 +1,17 @@
 /**
- * splice会改变原数组，slice不会，他们都可以完成数组的切割
- * pop
- * push
- * shift
- * unshift
- * sort
- * reverse
- * map
- * filter
- * reduce
- * forEach
- * concat
- * join
+ * splice 删除或替换现有元素或者原地添加新的元素来修改数组,并以数组形式返回被修改的内容。此方法会改变原数组。
+ * pop 弹出原数组最后一个元素，，并返回该元素的值，数组长度减一
+ * push 将一个或多个元素添加到数组的末尾，并返回该数组的新长度
+ * shift 弹出原数组第一个值，并返回该元素的值，数组长度减一
+ * unshift 将一个或多个元素添加到数组的开头，并返回该数组的新长度(该方法修改原有数组)
+ * sort 对原数组进行排序，默认将元素转化为字符串，比较UTF-8代码单元值
+ * reverse 将原数组反转
+ * map 创建一个新数组，其结果是该数组中的每个元素是调用一次提供的函数后的返回值。
+ * filter 创建一个新数组，包含所有通过测试的元素
+ * reduce forEach 不会直接改变调用它的对象，但是那个对象可能会被 callback 函数改变
+ * forEach 对数组的每个元素执行一次给定的函数，不会直接改变调用它的对象，但是那个对象可能会被 callback 函数改变
+ * concat 合并两个或多个数组，并返回一个新数组
+ * join 将一个数组（或一个类数组对象）的所有元素连接成一个字符串并返回这个字符串。如果数组只有一个项目，那么将返回该项目而不使用分隔符
  */
 
 
@@ -149,3 +149,27 @@ function titleCase(str) {
 }
 
 titleCase("I'm a little tea pot")
+
+
+/**
+ * diff two arrays
+ * @param {*} arr1 
+ * @param {*} arr2 
+ */
+
+function diffArray(arr1, arr2) {
+    var newArr = [];
+    for(let i=0; i<arr1.length; i++) {
+      if(arr2.indexOf(arr1[i]) === -1) {
+        newArr.push(arr1[i])
+      }
+    }
+    for(let j=0; j<arr2.length; j++) {
+      if(arr1.indexOf(arr2[j]) === -1) {
+        newArr.push(arr2[j])
+      }
+    }
+    return newArr;
+  }
+  
+  diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);

@@ -67,7 +67,74 @@ const switchTab = (path) => {
 
 
 /**
- * 对于接口请求进行封装
+ * 对于微信接口请求进行的Promise封装
  * 
  * 
  */
+
+const app = getApp()
+
+const request = (method, url, data) => {
+    const header = {
+
+    }
+
+    return new Promise((resolve, reject) => {
+        wx.request({
+            method: method,
+            url: app.globalData.host + url,
+            data: data,
+            header: header,
+            success(res) {
+
+
+                resolve(res.data);
+            },
+            fail(err) {
+                wx.showToast({
+                    title: '网络异常，请稍后再试',
+                    mask: true,
+                    icon: 'none',
+                    duration: 3000
+                })
+            }
+        })
+    })
+}
+
+/**
+ * 微信的请求和响应拦截
+ * 
+ * 
+ */
+
+const app = getApp();
+
+const request = (method, url, data) => {
+
+    return new Promise((resolve, reject) => {
+        wx.request({
+
+            success(res) {
+                if(res.statusCode === 200) {
+                    if(res.data && res.data.code === "SUCCESS") {
+                        resolve(res.data)
+                    } else {
+                        formatError(res)
+                        reject(res.data)
+                    }
+                } else {
+                    reject(res.data)
+                }
+            },
+            fail(err) {
+                wx.showToast({
+                    title: '网络异常，请稍后再试',
+                    mask: true,
+                    icon: 'none',
+                    duration: 3000
+                })
+            }
+        })
+    })
+}

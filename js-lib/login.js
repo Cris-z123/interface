@@ -9,7 +9,7 @@ let instance  = axios.create({
 instance.interceptors.request.use(
     request => {
         const auth = 'Token' + localStorage.getItem('token');
-        request.headers.Authorization
+        request.headers.Authorization = auth
         return request
     },
     error => {

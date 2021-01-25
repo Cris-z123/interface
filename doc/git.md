@@ -15,5 +15,5 @@
 `git diff <source_branch> <target_branch>` - 合并改动前，可以查看
 `git tag 1.0.0 1b2e1d63ff` - 创建一个叫1.0.0标签
 `git log` - 获取提交ID
-`gir checkout -- <filename>` - 使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响
+`git checkout -- <filename>` - 使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响
 `git fetch origin` `git reset --hard origin/master` - 丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它

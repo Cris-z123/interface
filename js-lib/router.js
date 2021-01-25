@@ -27,3 +27,37 @@ router.beforeEach((to, from, next) => {
     后置守卫：
         全局的后置守卫： afterEach
 */
+
+
+router.beforeEach((to, from, next) => {
+    const token = store.state.user.token || '';
+    if(token) {
+        if(to.path === '/userlogin/login') {
+            next({
+                path: '/'
+            })
+        } else {
+            if(store.getters.username.length === 0) {
+                store.dispatch('permission/GenerateRoutes')
+                    .then(() => {
+                        router.addRouters(store.getters.addRouters)
+                        next({
+                            ...to,
+                            replace: true
+                        })
+                    })
+                    .catch(err => {
+                        console.log(err)
+                    })
+            } else {
+                next()
+            }
+        }
+    } else {
+        if(to.path.includes('/userlogin')) {
+            next()
+        } else {
+            next('/userlogin')
+        }
+    }
+})

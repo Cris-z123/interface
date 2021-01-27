@@ -1,0 +1,17 @@
+.elem {
+    width: 400px;
+    line-height: 30px;
+    font-size: 20px;
+    &.sl-ellipsis {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    &.ml-ellipsis {
+        display: -webkit-box;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+    }
+}

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>烟花</title>
+</head>
+<body>
+    <canvas id="myCanvas"></canvas>
+    <script>
+        const canvas = document.getElementById('myCanvas');
+        const context = canvas.getContext('2d');
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth
+            canvas.height = window.innerHeight
+        }
+        function clearCanvas() {
+            context.fillStyle = '#ffffff'
+            context.fillRect(0, 0, canvas.width, canvas.height)
+        }
+        window.addEventListener('resize', resizeCanvas, false)
+        resizeCanvas();
+        
+        function mouseDownHandler(e) {
+            let x = e.clientX
+            let y = e.clientY
+
+            drawFireworks(x, y)
+        }
+        function drawFireworks(sx, sy) {
+            const count = 10
+            const radius = 10
+            
+            for(let i=0; i<count; i++) {
+                let angle = 360 / count * i
+                let radians = angle * Math.PI / 180
+                let vx = sx + Math.cos(radians) * radius
+                let vy = sy + Math.sin(radians) * radius
+                const size = 2
+                
+                context.beginPath()
+                context.arc(vx, vy, size, 0, Math.PI*2, false)
+                context.closePath()
+                context.fillStyle = '#ff0000'
+                context.fill()
+            }
+        }
+        document.addEventListener('mousedown', mouseDownHandler, false)
+
+
+        function fire(x, y) {
+            let radius = 0
+            function tick() {
+                drawFireworks(x, y)
+                radius++;
+                requestAnimationFrame(tick)
+            }
+            tick()
+        }
+    </script>
+</body>
+</html>

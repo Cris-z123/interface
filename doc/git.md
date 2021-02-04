@@ -1,4 +1,4 @@
-本地仓库由 工作目录（working dir） 缓存区（Index） HEAD 三部分组成
+## 本地仓库由 工作目录（working dir） 缓存区（Index） HEAD 三部分组成
 
 `git init` - 初始化仓库
 `git clone` - 克隆仓库
@@ -17,3 +17,24 @@
 `git log` - 获取提交ID
 `git checkout -- <filename>` - 使用 HEAD 中的最新内容替换掉你的工作目录中的文件。已添加到缓存区的改动，以及新文件，都不受影响
 `git fetch origin` `git reset --hard origin/master` - 丢弃你所有的本地改动与提交，可以到服务器上获取最新的版本并将你本地主分支指向到它
+
+
+
+## git 提交规范
+
+<type>(scope):<subject>
+
+type:
+* feature: 新功能
+* fix: 修补bug
+* docs: 文档
+* style: 格式
+* refactor: 重构
+* test: 增加测试
+* chore: 构建过程或辅助工具的变动
+
+scope:
+影响的范围
+
+subject:
+对本次提交做简单描述

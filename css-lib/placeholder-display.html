@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        input {
+            width: 150px;
+            height: 32px;
+            border: 1px solid #ccc;
+            outline-color: #2486ff;
+            border-radius: 4px;
+            box-shadow: inset 0 1px 1px rgba(0, 0, 0, .075), 0 0 8px rgba(102, 175, 233, .6);
+            padding-left: 8px;
+        }
+
+        .input-control:placeholder-shown::placeholder {
+            color: transparent;
+        }
+
+        .input-box {
+            position: relative;
+        }
+
+        .input-label {
+            position: absolute;
+            color: #ccc;
+            font-size: 14px;
+            left: 10px;
+            top: 8px;
+            pointer-events: none;
+        }
+
+        .input-control:not(:placeholder-shown)~.input-label,
+        .input-control:focus~.input-label {
+            color: #2486ff;
+            transform: scale(0.75) translate(-2px, -22px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="input-box">
+        <input class="input-control input-outline" placeholder="请输入账号">
+        <label class="input-label">账号</label>
+    </div>
+</body>
+
+</html>

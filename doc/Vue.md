@@ -17,7 +17,10 @@ Destroy //组件销毁后做一些事情
 2. 爷孙组件 eventBus
 3. 兄弟组件 eventBus
 4. Vuex
-   
+
+### 父子组件传值时，希望子组件中的props跟着父组件变化而变化。
+1. 直接在子组件中绑定`props`
+2. 如果将`props`的值放在了`data`中，则需要用`watch`或者`computed`监听该值的变化。因为`data`中只有该值的初始值
 ## Vuex
 Vuex是一个专门为Vue.js应用程序开发的状态管理工具
 * State
@@ -35,3 +38,5 @@ Vue Router 是 Vue.js 官方的路由管理器。
 3. 路由守卫
 4. History
 5. 动态路由
+
+父子组件传值时，希望子组件中的props跟着父组件变化而变化。

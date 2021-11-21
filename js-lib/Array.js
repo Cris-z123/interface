@@ -14,162 +14,184 @@
  * join 将一个数组（或一个类数组对象）的所有元素连接成一个字符串并返回这个字符串。如果数组只有一个项目，那么将返回该项目而不使用分隔符
  */
 
-
-
-
-let arr1 = [[4, 5, 1, 3], [13, 27, 18, 26], [32, 35, 37, 39], [1000, 1001, 857, 1]]
-let arr2 = [1, 2, 3, 4]
-
+let arr1 = [
+  [4, 5, 1, 3],
+  [13, 27, 18, 26],
+  [32, 35, 37, 39],
+  [1000, 1001, 857, 1],
+];
+let arr2 = [1, 2, 3, 4];
 
 //多维数组中寻找每项最大值
 function largestOfFour(arr) {
-    let newArr = []
-    for(let i=0; i<arr.length; i++) {
-        newArr.push(Math.max(...arr[i]))
-    }
-    return newArr
+  let newArr = [];
+  for (let i = 0; i < arr.length; i++) {
+    newArr.push(Math.max(...arr[i]));
+  }
+  return newArr;
 }
 
-console.log(largestOfFour(arr1))
-console.log(largestOfFour(arr2))
-
-
-
+console.log(largestOfFour(arr1));
+console.log(largestOfFour(arr2));
 
 /**
  * Finders Keepers
  * This means that given an element x, the 'truth test' is passed if func(x) is true. If no element passes the test, return undefined.
-*/
+ */
 
 function findElement(arr, func) {
-    for(let i=0; i<arr.length; i++) {
-        if(func(arr[i])) {
-            return arr[i]
-        }
+  for (let i = 0; i < arr.length; i++) {
+    if (func(arr[i])) {
+      return arr[i];
     }
-    return undefined
+  }
+  return undefined;
 }
 
-findElement([1, 2, 3, 4], num => num % 2 === 0);
-
-
+findElement([1, 2, 3, 4], (num) => num % 2 === 0);
 
 /**
  * 使用splice和slice将arr1添加到arr2中，从索引为n的位置开始插入
- * @param {*} arr1 
- * @param {*} arr2 
- * @param {*} n 
+ * @param {*} arr1
+ * @param {*} arr2
+ * @param {*} n
  */
 
- //方法1
+//方法1
 function frankenSplice(arr1, arr2, n) {
-    let newArr = arr2.slice()
-    newArr.splice(n, 0, ...arr1)
-    return newArr;
-  }
-  
+  let newArr = arr2.slice();
+  newArr.splice(n, 0, ...arr1);
+  return newArr;
+}
+
 frankenSplice([1, 2, 3], [4, 5, 6], 1);
 
 //方法2
 function frankenSplice(arr1, arr2, n) {
-    let newArr = arr2.slice()
-    newArr.splice(n, 0, ...arr1)
-    for(let i=0; i<arr1.length; i++) {
-        newArr.splice(n, 0, arr1[i]);
-        n++;
-    }
-    return newArr;
+  let newArr = arr2.slice();
+  newArr.splice(n, 0, ...arr1);
+  for (let i = 0; i < arr1.length; i++) {
+    newArr.splice(n, 0, arr1[i]);
+    n++;
   }
-  
-frankenSplice([1, 2, 3], [4, 5, 6], 1);
+  return newArr;
+}
 
+frankenSplice([1, 2, 3], [4, 5, 6], 1);
 
 /**
  * 将num插入arr并排序,返回num的索引值.num插入位置为小于它的值且大于它的两个值之间
- * @param {*} arr 
- * @param {*} num 
+ * @param {*} arr
+ * @param {*} num
  */
 
 function getIndexToIns(arr, num) {
-    arr.push(num)
-    arr.sort((a, b) => a - b )
-    for(let i=0; i<arr.length; i++) {
-      while(arr[i] === num){
-        return i
-      }
+  arr.push(num);
+  arr.sort((a, b) => a - b);
+  for (let i = 0; i < arr.length; i++) {
+    while (arr[i] === num) {
+      return i;
     }
   }
-  
-  getIndexToIns([40, 60], 50);
-  
+}
+
+getIndexToIns([40, 60], 50);
 
 /**
  * 返回一个二维数组，以size为长度，分隔arr
- * @param {*} arr 
- * @param {*} size 
+ * @param {*} arr
+ * @param {*} size
  */
 
 //方法1
 function chunkArrayInGroups(arr, size) {
-    let result = [];
+  let result = [];
 
-    while (arr.length > size) {
-        result.push(arr.splice(0, size))
-    }
-    if (arr.length){
-        result.push(arr);
-    }
+  while (arr.length > size) {
+    result.push(arr.splice(0, size));
+  }
+  if (arr.length) {
+    result.push(arr);
+  }
 
-    return result;
+  return result;
 }
 //方法2
 function chunkArrayInGroups(arr, size) {
-    let newArr = [];
-    while (arr.length > 0) {
-        newArr.push(arr.splice(0, size));
-    }
-    return newArr; 
+  let newArr = [];
+  while (arr.length > 0) {
+    newArr.push(arr.splice(0, size));
+  }
+  return newArr;
 }
 
 chunkArrayInGroups(["a", "b", "c", "d"], 2);
-
-
-
 
 /**
  * 输入一个字符串将首字母大写
  */
 
 function titleCase(str) {
-    let newArr = str.toLowerCase().split(" ")
-    for(let i=0; i<newArr.length; i++) {
-        newArr[i] = newArr[i].charAt(0).toUpperCase() + newArr[i].slice(1)
-    }
-    return newArr.join(" ")
+  let newArr = str.toLowerCase().split(" ");
+  for (let i = 0; i < newArr.length; i++) {
+    newArr[i] = newArr[i].charAt(0).toUpperCase() + newArr[i].slice(1);
+  }
+  return newArr.join(" ");
 }
 
-titleCase("I'm a little tea pot")
-
+titleCase("I'm a little tea pot");
 
 /**
  * diff two arrays
- * @param {*} arr1 
- * @param {*} arr2 
+ * @param {*} arr1
+ * @param {*} arr2
  */
 
 function diffArray(arr1, arr2) {
-    var newArr = [];
-    for(let i=0; i<arr1.length; i++) {
-      if(arr2.indexOf(arr1[i]) === -1) {
-        newArr.push(arr1[i])
-      }
+  var newArr = [];
+  for (let i = 0; i < arr1.length; i++) {
+    if (arr2.indexOf(arr1[i]) === -1) {
+      newArr.push(arr1[i]);
     }
-    for(let j=0; j<arr2.length; j++) {
-      if(arr1.indexOf(arr2[j]) === -1) {
-        newArr.push(arr2[j])
-      }
-    }
-    return newArr;
   }
-  
-  diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+  for (let j = 0; j < arr2.length; j++) {
+    if (arr1.indexOf(arr2[j]) === -1) {
+      newArr.push(arr2[j]);
+    }
+  }
+  return newArr;
+}
+
+diffArray([1, 2, 3, 5], [1, 2, 3, 4, 5]);
+
+Array.prototype.reduce =
+  Array.prototype.reduce ||
+  function (func, initialValue) {
+    var arr = this;
+    var base = typeof initialValue === "undefined" ? arr[0] : initialValue;
+    var startPoint = typeof initialValue === "undefined" ? "1" : "0";
+
+    arr.slice(startPoint).forEach(function (val, index) {
+      base = func(base, val, index + startPoint, arr);
+    });
+
+    return base;
+  };
+
+const only = (obj = {}, keys) => {
+  if ("string" === typeof keys) keys = keys.split(/ +/);
+
+  return keys.reduce((ret, key) => {
+    if (null === obj[key]) return ret;
+    ret[key] = obj[key];
+    return ret;
+  }, {});
+};
+
+let o = {
+  a: "a",
+  b: "b",
+  c: "c",
+};
+
+console.log(only(o, ["a", "b"]));

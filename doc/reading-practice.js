@@ -170,7 +170,80 @@ function Promise(executor) {
   }
 }
 
-Promise.prototype.then = function (onfulfilled, onrejected) {
+/**
+ *
+ * @param {Promise} promise2 Promise实例
+ * @param {Any} result onfulfilled或onrejected的返回值
+ * @param {Function} resolve promise2的resolve方法
+ * @param {Function} reject promise2的reject方法
+ */
+const resolvePromise = (promise2, result, resolve, reject) => {
+  if (result === promise2) {
+    reject(new TypeError("error due to circular reference"));
+  }
+
+  let consumed = false;
+  let thenable;
+
+  if (result instanceof Promise) {
+    if (result.status === "pending") {
+      result.then(function (data) {
+        resolvePromise(promise2, data, resolve, reject);
+      }, reject);
+    } else {
+      result.then(resolve, reject);
+    }
+    return;
+  }
+
+  let isComplexResult = (target) =>
+    (typeof target === "function" || typeof target === "object") &&
+    target !== null;
+
+  if (isComplexResult(result)) {
+    try {
+      thenable = result.then;
+
+      if (typeof thenable === "function") {
+        thenable.call(
+          result,
+          function (data) {
+            if (consumed) {
+              return;
+            }
+            consumed = true;
+
+            return resolvePromise(promise2, data, resolve, reject);
+          },
+          function (error) {
+            if (consumed) {
+              return;
+            }
+            consumed = true;
+
+            return reject(error);
+          }
+        );
+      } else {
+        resolve(result);
+      }
+    } catch (error) {
+      if (consumed) {
+        return;
+      }
+      consumed = true;
+
+      return reject(error);
+    }
+  } else {
+    resolve(result);
+  }
+};
+
+Promise.prototype.then = function (
+  onfulfilled = Function.prototype,
+  onrejected = Function.prototype
+) {
   onfulfilled =
     typeof onfulfilled === "function" ? onfulfilled : (data) => data;
 
@@ -181,14 +254,113 @@ Promise.prototype.then = function (onfulfilled, onrejected) {
           throw error;
         };
 
+  let promise2;
+
   if (this.status === "fulfilled") {
-    onfulfilled(this.value);
+    return (promise2 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        try {
+          let result = onfulfilled(this.value);
+          resolvePromise(promise2, result, resolve, reject);
+        } catch (error) {
+          reject(error);
+        }
+      });
+    }));
   }
+
   if (this.status === "rejected") {
-    onrejected(this.reason);
+    return (promise2 = new Promise(() => {
+      setTimeout(() => {
+        try {
+          let result = onrejected(this.value);
+          resolvePromise(promise2, result, resolve, reject);
+        } catch (error) {
+          reject(error);
+        }
+      });
+    }));
   }
+
   if (this.status === "pending") {
-    this.onFulfilledArray.push(onfulfilled);
-    this.onRejectedArray.push(onrejected);
+    return (promise2 = new Promise(() => {
+      this.onFulfilledArray.push(() => {
+        try {
+          let result = onfulfilled(this.value);
+          resolvePromise(promise2, result, resolve, reject);
+        } catch (error) {
+          reject(error);
+        }
+      });
+
+      this.onRejectedArray.push(() => {
+        try {
+          let result = onrejected(this.reason);
+          resolvePromise(promise2, result, resolve, reject);
+        } catch (error) {
+          reject(error);
+        }
+      });
+    }));
   }
+};
+
+Promise.prototype.catch = function (catchFunc) {
+  return this.then(null, catchFunc);
+};
+
+Promise.resolve = function (value) {
+  return new Promise((resolve, reject) => {
+    resolve(value);
+  });
+};
+
+Promise.reject = function (value) {
+  return new Promise((resolve, reject) => {
+    reject(value);
+  });
+};
+
+Promise.all = function (promiseArray) {
+  if (!Array.isArray(promiseArray)) {
+    throw new TypeError("The arguments should be an array!");
+  }
+
+  return new Promise((resolve, reject) => {
+    try {
+      let resultArray = [];
+
+      const length = promiseArray.length;
+
+      for (let i = 0; i < length; i++) {
+        promiseArray[i].then((data) => {
+          resultArray.push(data);
+
+          if (resultArray.length === length) {
+            resolve(resultArray);
+          }
+        }, reject);
+      }
+    } catch (error) {
+      reject(error);
+    }
+  });
+};
+
+Promise.race = function (promiseArray) {
+  if (!Array.isArray(promiseArray)) {
+    throw new TypeError("The arguments should be an array!");
+  }
+
+  return new Promise((resolve, reject) => {
+    try {
+      const length = promiseArray.length;
+
+      for (let i = 0; i < length; i++) {
+        promiseArray[i].then(resolve, reject);
+      }
+    } catch (error) {
+      reject(error);
+    }
+  });
 };

@@ -364,3 +364,28 @@ Promise.race = function (promiseArray) {
     }
   });
 };
+
+/**
+ * JS继承
+ * @param {Object} Child 子对象
+ * @param {Object} Parent 父对象
+ */
+function inherit(Child, Parent) {
+  Child.prototype = Object.create(Parent.prototype);
+
+  Child.prototype.constructor = Child;
+
+  Child.super = Parent;
+
+  if (Object.setPrototypeOf) {
+    Object.setPrototypeOf(Child, Parent);
+  } else if (Child._proto_) {
+    Child._proto_ = Parent;
+  } else {
+    for (var k in Parent) {
+      if (Parent.hasOwnProperty(k) && !(k in Child)) {
+        Child[k] = Parent[k];
+      }
+    }
+  }
+}

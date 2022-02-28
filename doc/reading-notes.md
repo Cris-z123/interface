@@ -114,3 +114,122 @@ js 代码执行的两个阶段：
    - BFC 区域不会与浮动元素重叠，而是会依次排列
    - BFC 区域是一个独立的渲染容器，容器内的元素和 BFC 区域外的元素之间不会由任何干扰
    - 浮动元素的高度也参与 BFC 的高度计算
+4. 居中
+   * 居中元素定宽高
+   1. `absolute` + 负`margin`
+     ```css
+     .wp {
+        position: relative;
+     }
+     .box {
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        margin-left: -50px;
+        margin-top: -50px;
+     }
+     ```
+   2. `absolute` + `margin auto`
+     ```css
+     .wp {
+        position: relative;
+     }
+     .box {
+        position: absolute;
+        top: 0;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        margin: auto;
+     }
+     ```
+   3. `absolute` + `calc`
+     ```css
+     .wp {
+        position: relative;
+     }
+     .box {
+        position: absolute;
+        top: calc(50% - 50px);
+        left: calc(50% - 50px);
+     }
+     ```
+   * 居中元素不定宽高
+   1. `absolute` + `transform`
+      ```css
+      .wp {
+         position: relative;
+      }
+      .box {
+         position: absolute;
+         top: 50%;
+         left: 50%;
+         transform: translate(-50%, -50%);
+      }
+      ```
+   2. `lineheight`
+      ```css
+      .wp {
+         lint-height: 300px;
+         text-height: center;
+         font-size: 0px;
+      }
+      .box {
+         font-size: 16px;
+         display: inline-block;
+         vertical-align: middle;
+         line-height: initial;
+         text-align: left;
+      }
+      ```
+   3. `table`
+      ```css
+      .wp {
+         text-align: center;
+      }
+      .box {
+         display: inline-block;
+      }
+      ```
+   4. `css-table`
+      ```css
+      .wp {
+         display: table-cell;
+         text-align: center;
+         vertical-align: middle;
+      }
+      .box {
+         display: inline-block;
+      }
+      ```      
+   5. `flex`
+      ```css
+      .wp {
+         display: flex;
+         justify-content: center;
+         align-items: center;
+      }
+      ``` 
+   6. `grid`
+      ```css
+      .wp {
+         display: grid;
+      }
+      .box {
+         align-self: center;
+         justify-self: center;
+      }
+      ```
+5. 响应式布局
+   * 传统布局
+   * 相对单位布局
+     1. em：相对于当前元素或当前元素继承来的字体的宽度
+     2. rem：相对于根节点（html）的字体大小
+     3. vh、vh、vmin、vamx：相对于视口
+     4. %
+     5. calc()
+   * 通过媒体查询实现的响应式布局
+   * 基于相对单位rem的flexible布局
+   * flex布局
+   * grid布局
+   * 借助javascript进行布局

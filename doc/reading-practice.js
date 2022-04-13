@@ -671,7 +671,7 @@ const walkToDiff = (oldVirtualDom, newVirtualDom, index, patches) => {
     });
   } else if (
     typeof oldVirtualDom === "string" &&
-    typeof newVirtualDom === "string"
+    typeof newVirtualDom === "string" // 文本元素变化
   ) {
     if (oldVirtualDom !== newVirtualDom) {
       diffResult.push({
@@ -681,10 +681,13 @@ const walkToDiff = (oldVirtualDom, newVirtualDom, index, patches) => {
       });
     }
   } else if (oldVirtualDom.tagName === newVirtualDom.tagName) {
+    // 仅元素属性变化
+
     let diffAttributeResult = {};
 
+    // 对比新旧元素所不同的属性
     for (let key in oldVirtualDom) {
-      if (oldVirtualDom[key] !== newVirtualDom) {
+      if (oldVirtualDom[key] !== newVirtualDom[key]) {
         diffAttributeResult[key] = newVirtualDom[key];
       }
     }
@@ -695,6 +698,7 @@ const walkToDiff = (oldVirtualDom, newVirtualDom, index, patches) => {
       }
     }
 
+    // 保存新旧元素存在的不同点
     if (Object.keys(diffAttributeResult).length > 0) {
       diffResult.push({
         type: "MODIFY_ATTRIBUTES",
@@ -702,6 +706,7 @@ const walkToDiff = (oldVirtualDom, newVirtualDom, index, patches) => {
       });
     }
 
+    // 继续遍历子元素
     oldVirtualDom.children.forEach((child, index) => {
       walkToDiff(child, newVirtualDom.children[index], ++initialIndex, patches);
     });
@@ -722,4 +727,73 @@ const walkToDiff = (oldVirtualDom, newVirtualDom, index, patches) => {
   if (diffResult.length) {
     patches[index] = diffResult;
   }
+};
+
+const patch = (node, patches) => {
+  let walker = { index: 0 };
+
+  walk(node, walker, patches);
+};
+
+/**
+ * 执行diff出的结果
+ * @param {*} node     元素
+ * @param {*} walker   执行器
+ * @param {*} patches  diff结果
+ */
+const walk = (node, walker, patches) => {
+  let currentPath = patches(walker.index);
+
+  let childNodes = node.childNodes;
+
+  childNodes.forEach((child) => {
+    walker.index++;
+    walk(child, walker, patches);
+  });
+
+  if (currentPath) {
+    doPatch(node, currentPath);
+  }
+};
+
+/**
+ * 执行器
+ * @param {*} node       元素
+ * @param {*} patches    diff结果
+ */
+const doPatch = (node, patches) => {
+  patches.forEach((patch) => {
+    switch (patch.type) {
+      case "MODIFY_ATTRIBUTES":
+        const attributes = patch.diffAttributeResult.attributes;
+
+        for (let key in attributes) {
+          if (node.nodeType !== 1) return;
+
+          const value = attributes[key];
+          if (value) {
+            setAttribute(node, key, value);
+          } else {
+            node.removeAttribute(key);
+          }
+        }
+        break;
+      case "MODIFY_TEXT":
+        node.textContent = patch.data;
+        break;
+      case "REPLACE":
+        let newNode =
+          patch.newNode instanceof Element
+            ? render(patch.newNode)
+            : document.createTextNode(patch.newNode);
+
+        node.parenNode.replaceChild(newNode, node);
+        break;
+      case "REMOVE":
+        node.parenNode.removeChild(node);
+        break;
+      default:
+        break;
+    }
+  });
 };

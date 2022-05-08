@@ -115,121 +115,157 @@ js 代码执行的两个阶段：
    - BFC 区域是一个独立的渲染容器，容器内的元素和 BFC 区域外的元素之间不会由任何干扰
    - 浮动元素的高度也参与 BFC 的高度计算
 4. 居中
-   * 居中元素定宽高
+   - 居中元素定宽高
    1. `absolute` + 负`margin`
-     ```css
-     .wp {
-        position: relative;
-     }
-     .box {
-        position: absolute;
-        top: 50%;
-        right: 50%;
-        margin-left: -50px;
-        margin-top: -50px;
-     }
-     ```
+   ```css
+   .wp {
+     position: relative;
+   }
+   .box {
+     position: absolute;
+     top: 50%;
+     right: 50%;
+     margin-left: -50px;
+     margin-top: -50px;
+   }
+   ```
    2. `absolute` + `margin auto`
-     ```css
-     .wp {
-        position: relative;
-     }
-     .box {
-        position: absolute;
-        top: 0;
-        right: 0;
-        left: 0;
-        bottom: 0;
-        margin: auto;
-     }
-     ```
+   ```css
+   .wp {
+     position: relative;
+   }
+   .box {
+     position: absolute;
+     top: 0;
+     right: 0;
+     left: 0;
+     bottom: 0;
+     margin: auto;
+   }
+   ```
    3. `absolute` + `calc`
-     ```css
-     .wp {
-        position: relative;
-     }
-     .box {
-        position: absolute;
-        top: calc(50% - 50px);
-        left: calc(50% - 50px);
-     }
-     ```
-   * 居中元素不定宽高
+   ```css
+   .wp {
+     position: relative;
+   }
+   .box {
+     position: absolute;
+     top: calc(50% - 50px);
+     left: calc(50% - 50px);
+   }
+   ```
+   - 居中元素不定宽高
    1. `absolute` + `transform`
       ```css
       .wp {
-         position: relative;
+        position: relative;
       }
       .box {
-         position: absolute;
-         top: 50%;
-         left: 50%;
-         transform: translate(-50%, -50%);
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
       }
       ```
    2. `lineheight`
       ```css
       .wp {
-         lint-height: 300px;
-         text-height: center;
-         font-size: 0px;
+        lint-height: 300px;
+        text-height: center;
+        font-size: 0px;
       }
       .box {
-         font-size: 16px;
-         display: inline-block;
-         vertical-align: middle;
-         line-height: initial;
-         text-align: left;
+        font-size: 16px;
+        display: inline-block;
+        vertical-align: middle;
+        line-height: initial;
+        text-align: left;
       }
       ```
    3. `table`
       ```css
       .wp {
-         text-align: center;
+        text-align: center;
       }
       .box {
-         display: inline-block;
+        display: inline-block;
       }
       ```
    4. `css-table`
       ```css
       .wp {
-         display: table-cell;
-         text-align: center;
-         vertical-align: middle;
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
       }
       .box {
-         display: inline-block;
+        display: inline-block;
       }
-      ```      
+      ```
    5. `flex`
       ```css
       .wp {
-         display: flex;
-         justify-content: center;
-         align-items: center;
+        display: flex;
+        justify-content: center;
+        align-items: center;
       }
-      ``` 
+      ```
    6. `grid`
       ```css
       .wp {
-         display: grid;
+        display: grid;
       }
       .box {
-         align-self: center;
-         justify-self: center;
+        align-self: center;
+        justify-self: center;
       }
       ```
 5. 响应式布局
-   * 传统布局
-   * 相对单位布局
+   - 传统布局
+   - 相对单位布局
      1. em：相对于当前元素或当前元素继承来的字体的宽度
      2. rem：相对于根节点（html）的字体大小
      3. vh、vh、vmin、vamx：相对于视口
-     4. %
-     5. calc()
-   * 通过媒体查询实现的响应式布局
-   * 基于相对单位rem的flexible布局
-   * flex布局
-   * grid布局
-   * 借助javascript进行布局
+     4. %：
+        - `margin` `padding` `font-size`: 根据父元素的宽度、字体大小
+        - `position: relative;` `border-radius` `transform:translate`: 根据自身宽高
+        - `position: absolute;`: 将祖先元素中存在定位属性的元素作为参照物
+        - `position: fixed;`: 相对于视口
+     5. calc()：响应式布局计算单位
+   - 通过媒体查询实现的响应式布局
+   - 基于相对单位 rem 的 flexible 布局
+   - flex 布局
+   - grid 布局
+   - 借助 javascript 进行布局
+   - 移动式响应式适配，禁用用户缩放，使页面宽度和设备宽度对齐
+     ```html
+     <meta
+       name="viewport"
+       content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover"
+     />
+     ```
+
+### 第四章 前端框架
+
+#### 框架的基本原理
+
+1. 数据劫持/数据代理
+2. 模板编译
+3. 虚拟 `DOM`
+4. 发布/订阅模型
+   极简版
+   ```js
+   class Notify {
+     constructor() {
+       this.subscribers = [];
+     }
+     add(handler) {
+       this.subscribers.push(handler);
+     }
+     emit() {
+       this.subscribers.forEach((subscriber) => subscriber());
+     }
+   }
+   ```
+5. MVVM
+   vue: 1. 对数据进行深度的拦截/代理（observe） 2. 发布/订阅数据变化（Notify，Watcher） 3. 根据数据变化，编译模板，更新视图（compiler）

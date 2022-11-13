@@ -2,9 +2,35 @@
  * 链表类
  * @param {*} val 
  */
-function LinkList(val) {
+function Node(val) {
     this.val = val
     this.next = null
+}
+
+function LinkList() {
+    this.head = new Node('head')
+    this.find = find
+    this.insert = insert
+    this.remove = remove
+    this.findPrev = findPrev
+    this.disPlay = disPlay
+}
+
+function find(item) {
+    let currNode = this.head
+    while(currNode.val !== item) {
+        currNode = currNode.next
+    }
+
+    return currNode
+}
+
+function disPlay() {
+    let currNode = this.head
+    while(currNode.val !== null) {
+        console.log(currNode.next.val)
+        currNode = currNode.next
+    }
 }
 
 /**

@@ -55,14 +55,25 @@ function reversePrint(head) {
     return result
 }
 
+function findPrev(item) {
+    let currNode = this.head
+    while(currNode.val !== null && currNode.next.val !== item) {
+        currNode = currNode.next
+    }
+    return currNode
+}
+
 /**
  * 给定单向链表的头指针和一个要删除的节点的值，定义一个函数删除该节点。
  * 返回删除后的链表的头节点。
  * @param {*} head 
  * @param {*} val 
  */
-function deleteNode(head, val) {
-
+function deleteNode(item) {
+    let prevNode = this.findPrev(item)
+    if(prevNode.next !== null) {
+        prevNode.next = prevNode.next.next
+    }
 }
 
 

@@ -81,7 +81,7 @@ httpService.interceptors.response.use(
                     error.message = 'http版本不支持该请求';
                     break;
                 default:
-                    error.message = `未知错误${error.response.status}`;
+                    error.message = `错误信息: ${error.response.status}`;
             }
         } else {
             error.message = "连接到服务器失败";

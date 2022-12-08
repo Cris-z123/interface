@@ -55,7 +55,7 @@ instance.interceptors.response.use(
                     break;
                 case 404:
                     Toast({
-                        message: '网络请求不存在',
+                        message: '资源不存在',
                         duration: 1500,
                         forbidClick: true
                     });

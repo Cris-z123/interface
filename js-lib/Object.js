@@ -1,4 +1,3 @@
-// Only change code below this line
 /**
  * 使用class关键字来创建Thermostat类，它的构造函数应该可以接收华氏温度作为参数。
  */

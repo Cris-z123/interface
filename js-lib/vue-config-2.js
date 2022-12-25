@@ -130,7 +130,7 @@ module.exports = {
         secure: false,
         pathRewrite: {
           '^/api': '/api/ctrl', //测试环境
-          // '/api': '', //需要rewrite重写的, //本地联调
+          // '/api': '', //需要rewrite, 本地联调
         },
       },
     },

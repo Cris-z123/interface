@@ -94,8 +94,8 @@ const SpritesmithTemplate = function (data) {
 }
 
 module.exports = {
-    publicPath: IS_PROD ? process.env.VUE_APP_PUBLIC_PATH : "./", // 默认'/'，部署应用包时的基本 URL
-    outputDir: process.env.outputDir || 'dist', // 'dist', 生产环境构建文件的目录
+    publicPath: IS_PROD ? process.env.VUE_APP_PUBLIC_PATH : "./",
+    outputDir: process.env.outputDir || 'dist',
     assetsDir: "", // 相对于outputDir的静态资源(js、css、img、fonts)目录
 
     configureWebpack: config => {
@@ -167,10 +167,9 @@ module.exports = {
             .set("@views", resolve("src/views"))
             .set("@layouts", resolve("src/layouts"));
             const cdn = {
-                // 访问https://unpkg.com/element-ui/lib/theme-chalk/index.css获取最新版本
                 css: ["//unpkg.com/element-ui@2.10.1/lib/theme-chalk/index.css"],
                 js: [
-                    "//unpkg.com/vue@2.6.10/dist/vue.min.js", // 访问https://unpkg.com/vue/dist/vue.min.js获取最新版本
+                    "//unpkg.com/vue@2.6.10/dist/vue.min.js",
                     "//unpkg.com/vue-router@3.0.6/dist/vue-router.min.js",
                     "//unpkg.com/vuex@3.1.1/dist/vuex.min.js",
                     "//unpkg.com/axios@0.19.0/dist/axios.min.js",
@@ -266,7 +265,7 @@ module.exports = {
         hotOnly: false, // 热更新
         proxy: {
             "/api": {
-                target: "https://www.easy-mock.com/mock/5bc75b55dc36971c160cad1b/sheets", // 目标代理接口地址
+                target: "https://www.easy-mock.com/", // 目标代理接口地址
                 secure: false,
                 changeOrigin: true, // 开启代理，在本地创建一个虚拟服务端
                 // ws: true, // 是否启用websockets

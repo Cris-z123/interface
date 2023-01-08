@@ -187,4 +187,3 @@ instance.defaults.timeout = 2500;
 instance.get('/longRequest', {
   timeout: 5000
 });
-

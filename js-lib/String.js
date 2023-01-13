@@ -85,3 +85,4 @@ function truncateString(str, num) {
   }
   
   mutation(["hello", "hey"]);
+  

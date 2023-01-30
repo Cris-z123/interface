@@ -72,9 +72,9 @@ const switchTab = (path) => {
  * 
  */
 
-const app = getApp()
+const app1 = getApp()
 
-const request = (method, url, data) => {
+const request1 = (method, url, data) => {
     const header = {
 
     }
@@ -108,9 +108,9 @@ const request = (method, url, data) => {
  * 
  */
 
-const app = getApp();
+const app2 = getApp();
 
-const request = (method, url, data) => {
+const request2 = (method, url, data) => {
 
     return new Promise((resolve, reject) => {
         wx.request({

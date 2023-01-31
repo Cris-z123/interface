@@ -14,6 +14,7 @@ function download() {
     link.download = filename
     link.click()
     window.URL.revokeObjectURL(url)
+    link.remove()
 }
 
 

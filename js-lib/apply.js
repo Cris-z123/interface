@@ -3,7 +3,7 @@
  * @param {*绑定值} context
  * @param {*参数} args
  */
-Function.prototype.myApply = function (context, args) {
+Function.prototype.myApply1 = function (context, args) {
   context = context || window;
   args = args ? args : [];
   const key = Symbol();
@@ -13,7 +13,7 @@ Function.prototype.myApply = function (context, args) {
   return result;
 };
 
-Function.prototype.myApply = function (targetObject, argsArray) {
+Function.prototype.myApply2 = function (targetObject, argsArray) {
   if (typeof argsArray === "undefined" || argsArray === null) {
     argsArray = [];
   }

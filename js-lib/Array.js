@@ -117,6 +117,7 @@ function chunkArrayInGroups(arr, size) {
 
   return result;
 }
+
 //方法2
 function chunkArrayInGroups(arr, size) {
   let newArr = [];

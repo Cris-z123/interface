@@ -10,7 +10,7 @@
 |*|  * docCookies.removeItem(name[, path], domain)
 |*|  * docCookies.hasItem(name)
 |*|  * docCookies.keys()
-|*|
+|*|  from MDN
 \*/
 
 var docCookies = {

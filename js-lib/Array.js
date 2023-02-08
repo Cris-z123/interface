@@ -105,7 +105,7 @@ getIndexToIns([40, 60], 50);
  */
 
 //方法1
-function chunkArrayInGroups(arr, size) {
+function chunkArrayInGroups1(arr, size) {
   let result = [];
 
   while (arr.length > size) {
@@ -119,7 +119,7 @@ function chunkArrayInGroups(arr, size) {
 }
 
 //方法2
-function chunkArrayInGroups(arr, size) {
+function chunkArrayInGroups2(arr, size) {
   let newArr = [];
   while (arr.length > 0) {
     newArr.push(arr.splice(0, size));

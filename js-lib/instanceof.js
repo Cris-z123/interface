@@ -2,8 +2,8 @@
  * 手写instanceof
  * 1.确定输入值的原型
  * 2.循环查找原形链，对照两个值的原型
- * @param {*} right 
- * @param {*} left 
+ * @param {*} right
+ * @param {*} left
  */
 
 function myInstanceof(right, left) {

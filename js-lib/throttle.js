@@ -9,8 +9,8 @@
  * 方法二：
  * 1.定义上次触发时间
  * 2.比较两次调用时间差
- * @param {*} fn 
- * @param {*} delay 
+ * @param {Callback} fn
+ * @param {Number}   delay
  */
 function throttle(fn, delay) {
     let timer = null;

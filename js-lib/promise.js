@@ -72,6 +72,10 @@ Promise.all([fn1(), fn2(), fn3()]).then(function (results) {
   console.log(results);
 });
 
+Promise.allSettled([fn1(), fn2(), fn3()]).then(function (results) {
+  console.log(results);
+})
+
 Promise.race([fn1(), fn2(), fn3()]).then(function (results) {
   console.log(results);
 });

@@ -6,17 +6,17 @@
 * `beforeCreate`   //创建组件时做一些事情
 * `created`        //创建组建后做一些事情
 * `beforeMount`    //挂载组件前做一些事情
-* `Mounted`        //挂载组件后做一些事情
+* `mounted`        //挂载组件后做一些事情
 * `beforeUpdate`   //组件更新前做一些事情
 * `updated`        //组件更新时做一些事情
 * `beforeDestroy`  //组件销毁前做一些事情
-* `Destroy`        //组件销毁后做一些事情
+* `destroyed`      //组件销毁后做一些事情
 
 ## Vue如何实现组件件通信
 1. 父子组件 $emit('xxx', data) $on('xxx', function(){}) props
 2. 爷孙组件 eventBus
 3. 兄弟组件 eventBus
-4. Vuex
+4. Vuex 
 5. `provide` `inject`
 6. `$attrs` `$listeners`
 7. `ref` `$refs`

@@ -5,7 +5,7 @@
     前置守卫：
         1. 全局的前置守卫： beforeEach beforeResolve（同时在所有组件内守卫和异步路由组件被解析之后，解析守卫就被调用）
         2. 路由独享的守卫： beforeEnter
-        3. 组件内的守卫： beforeRouterEnter、beforeRouterUpdate、beforeRouteLeave
+        3. 组件内的守卫：   beforeRouterEnter、beforeRouterUpdate、beforeRouteLeave
     后置守卫：
         全局的后置守卫： afterEach
 */

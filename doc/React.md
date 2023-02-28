@@ -6,6 +6,27 @@
 
 ## Hooks API
 
+```js
+const [count, setCount] = useState(0) //
+
+useEffect(() => {
+
+}) // 
+
+useCallback(() => {
+
+}, []) // 
+
+useMemo() // 
+
+const refContainer = useRef(initialValue) //
+
+useContext() //
+
+const [state, dispatch] = useReducer(reducer, initialArg, init) //
+```
+
+
 vue的hook思想来源于react
 相同点：
 

@@ -79,8 +79,9 @@
 
    一般来说 `constructor` 不用写
 
-7. setState
-   React 中不能直接修改状态，要是使用 `setState`
+7. setState useState
+   React 类组件中不能直接修改状态，要是使用 `setState`
+         函数组件中使用`useState()`
 
 8. `props`
    对 props 的限制及默认值

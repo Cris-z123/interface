@@ -3,8 +3,8 @@
  * 
  * 1.判断定时器是否存在，清除计数器
  * 2.重新调用setTimeout
- * @param {*} fn 
- * @param {*} delay 
+ * @param {function} fn 
+ * @param {number}   delay 
  */
 
 function debounce(fn, delay) {

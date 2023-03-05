@@ -90,9 +90,9 @@ const step2 = async () => {
 
 /**
  * 并发请求，并限制最大并发数
- * @param {String || Array} urlIds 接口地址
- * @param {Promise} loadImg 接口请求
- * @param {Number} limit 最大并发限制数
+ * @param {String || Array} urlIds  接口地址
+ * @param {Promise} loadImg         接口请求
+ * @param {Number} limit            最大并发限制数
  * @returns
  */
 const loadByLimit = (urlIds, loadImg, limit) => {

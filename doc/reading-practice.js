@@ -251,8 +251,8 @@ Promise.prototype.then = function (
     typeof onrejected === "function"
       ? onrejected
       : (error) => {
-          throw error;
-        };
+        throw error;
+      };
 
   let promise2;
 
@@ -409,12 +409,12 @@ function inherit(Child, Parent) {
         ? (t.body.style.fontSize = "16px")
         : t.addEventListener("DOMContentLoaded", e);
     })(),
-    i(),
-    e.addEventListener("resize", i),
-    e.addEventListener("pageshow", function (e) {
-      e.persisted && i();
-    }),
-    2 <= d)
+      i(),
+      e.addEventListener("resize", i),
+      e.addEventListener("pageshow", function (e) {
+        e.persisted && i();
+      }),
+      2 <= d)
   ) {
     var o = t.createElement("body"),
       a = t.createElement("div");

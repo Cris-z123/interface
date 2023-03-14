@@ -1,11 +1,5 @@
 <template>
-  <el-upload
-    drag
-    action
-    :auto-upload="false"
-    :show-file-list="false"
-    :on-change="changeFile"
-  >
+  <el-upload drag action :auto-upload="false" :show-file-list="false" :on-change="changeFile">
     <i class="el-icon-upload"></i>
     <div class="el-upload__text">将文件拖到此处，或<em>点击上传</em></div>
   </el-upload>
@@ -21,20 +15,20 @@ export default {
       // coding... 进行分片
       // ...
 
-      const buffer = await this.filepParse(file,'buffer')
+      const buffer = this.filepParse(file, 'buffer')
       const sparkMD5 = new SparkMD5.ArrayBuffer()
       sparkMD5.append(buffer)
       this.hash = sparkMD5.end()
       const partSize = file.size / 10
       let current = 0
-      for (let i = 0 ;i < 10 ;i++) {
+      for (let i = 0; i < 10; i++) {
         let reqItem = {
           chunk: file.slice(current, current + partSize),
           filename: `${this.hash}_${i}.${suffix}`
-          }
-          current += partSize
-          partList.push(reqItem)
-          }
+        }
+        current += partSize
+        partList.push(reqItem)
+      }
       this.partList = partList
 
       // 创建切片请求
@@ -93,10 +87,9 @@ export default {
       send();
     },
     // 发送代码合并请求
-    mergeUpload() {},
+    mergeUpload() { },
   },
 };
 </script>
 
-<style>
-</style>
+<style></style>

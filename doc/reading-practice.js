@@ -440,9 +440,9 @@ window.addEventListener("resize", () => {
 
 /**
  * 实现数据响应式(Object.defineProperty())
- * 不能监听数组变化，需重写数组方法
+ * 不能监听数组变化，需重写数组原型方法
  * 需遍历对象每个属性，且需要对嵌套结构进行深层遍历
- * 底层不再是被优化重点
+ * ES5语法，所以底层不再是被优化重点
  * @param {Object} data
  * @returns
  */
@@ -494,7 +494,7 @@ const observe1 = (data) => {
  * 实现数据响应式(Proxy())
  * 支持整个对象，不用遍历对象每个属性
  * 支持代理数组的变化
- * 底层将被厂商持续优化
+ * ES6+语法，底层将被厂商持续优化
  * @param {Object} data
  * @returns
  */

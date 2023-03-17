@@ -537,8 +537,8 @@ const observe2 = (data) => {
 
 /**
  * 简易版vue模板编译
- * @param {*} el
- * @param {*} data
+ * @param {Element} el
+ * @param {object} data
  * @returns
  */
 function compile(el, data) {
@@ -583,9 +583,9 @@ function compile(el, data) {
 
 /**
  * 虚拟DOM
- * @param {*} node
- * @param {*} key
- * @param {*} value
+ * @param {string} node
+ * @param {string} key
+ * @param {string} value
  */
 
 const setAttribute = (node, key, value) => {
@@ -646,8 +646,8 @@ const renderDom = (element, target) => {
 
 /**
  * 虚拟DOM diff
- * @param {*} oldVirtualDom
- * @param {*} newVirtualDom
+ * @param {object} oldVirtualDom
+ * @param {object} newVirtualDom
  * @returns
  */
 

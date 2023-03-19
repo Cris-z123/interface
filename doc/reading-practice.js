@@ -538,7 +538,7 @@ const observe2 = (data) => {
 /**
  * 简易版vue模板编译
  * @param {Element} el
- * @param {object} data
+ * @param {Object}  data
  * @returns
  */
 function compile(el, data) {

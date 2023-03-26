@@ -1,10 +1,10 @@
 /**
  * 判断是否是工作日
- * @param {日期} data 
+ * @param {Date} date  日期
  */
 
-const isWeekDay = (data) => {
-    data.getDay() % 6 !== 0;
+const isWeekDay = (date) => {
+    date.getDay() % 6 !== 0;
 }
 
 /**
@@ -22,7 +22,7 @@ const goToTop = () => window.scrollTo(0, 0);
 
 /**
  * 两种方法，来获取特定年份的总周数
- * @param {年份} y 
+ * @param {number} y  年份
  */
 
 function computeWeeks(y) {
@@ -43,24 +43,24 @@ function getWeeks(y) {
  * 生成随机HEX色值
  */
 
-const randomColor = ()=> {
-    "#" + Math.floor(Math.random() *  0xffff).toString(16).padEnd(6, "0")
+const randomColor = () => {
+    "#" + Math.floor(Math.random() * 0xffff).toString(16).padEnd(6, "0")
 }
 
 /**
  * 生成星级评分
  * @param {分数} rate 
  */
-const startScore = rate=> {
-    "★★★★★☆☆☆☆☆".slice(5 - rate, 10-rate)
+const startScore = rate => {
+    "★★★★★☆☆☆☆☆".slice(5 - rate, 10 - rate)
 }
 
 /**
  * 键盘
  */
 
-(_=>[..."`1234567890-=~~QWERTYUIOP[]\\~ASDFGHJKL;'~~ZXCVBNM,./~"]
-    .map(x=>
-        (o+=`/${b='_'.repeat(w=x<y?2:' 667699'[x=["Bs","Tab","Caps","Enter"][p++]||'Shift',p])}\\|`,m+=y+(x+'    ')
-    .slice(0,w)+y+y,n+=y+b+y+y,l+=' __'+b)[73]&&(k.push(l,m,n,o),l='',m=n=o=y),m=n=o=y='|',p=l=k=[])&&k.join`
+(_ => [..."`1234567890-=~~QWERTYUIOP[]\\~ASDFGHJKL;'~~ZXCVBNM,./~"]
+    .map(x =>
+        (o += `/${b = '_'.repeat(w = x < y ? 2 : ' 667699'[x = ["Bs", "Tab", "Caps", "Enter"][p++] || 'Shift', p])}\\|`, m += y + (x + '    ')
+            .slice(0, w) + y + y, n += y + b + y + y, l += ' __' + b)[73] && (k.push(l, m, n, o), l = '', m = n = o = y), m = n = o = y = '|', p = l = k = []) && k.join`
 `)()

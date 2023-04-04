@@ -7,7 +7,7 @@
 `git push origin master` - 提交到远程分支
 `git checkout -b feature` - 创建一个feature分支并切换过去
 `git checkout master` - 切换回主分支
-`git branch -d feature` - 删除feature分支
+`git branch -d feature` - 删除本地feature分支
 `git push origin <branch>` - 推送分支到远程仓库
 `git pull` - 更新本地仓库到最新
 `gir merge <branch>` - 获取（fetch）并合并（merge）远端改动
@@ -38,3 +38,14 @@ scope:
 
 subject:
 对本次提交做简单描述
+
+远程分支已经删除了，但是本地仍然可以看到
+查看本地所有分支
+git branch -a
+查看远程分支
+git remote show origin
+删除或同步本地分支
+git remote prune origin
+
+同步远程指定分支
+git clone -b

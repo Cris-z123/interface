@@ -269,3 +269,24 @@ js 代码执行的两个阶段：
    ```
 5. MVVM
    vue: 1. 对数据进行深度的拦截/代理（observe） 2. 发布/订阅数据变化（Notify，Watcher） 3. 根据数据变化，编译模板，更新视图（compiler）
+
+
+#### 模块化
+1. CommonJS：node.js的模块化方案，文件即模块，具有单独的作用域。同步加载模块。`module.export` `require`
+2. AMD：异步模块化方案 `define` `require`，解决浏览器环境中的使用node.js模块化 `require.js`
+3. CMD：可以同步加载模块（`require`），也可以异步加载模块(`require.async`) `sea.js`
+4. UMD：可以同时使用CommonJS规范和AMD规范
+5. ESM：在编译时确定模块之间的依赖关系，输出值的引用。因为时编译时就确定模块之间的依赖关系，所以可以在打包时移除未被使用的代码，实现`tree shaking`
+
+#### Webpack
+webpack打包过程：
+* loaded 加载
+* sealed 封存
+* optimized 优化
+* chunked 分块
+* hashed 哈希
+* restored 重新创建
+
+compiler：包含完整的webpack配置，且全局只有compiler实例
+
+compilation：当webpack在开发模式时，每当文件有变化，一个新的compilation对象就会被创建

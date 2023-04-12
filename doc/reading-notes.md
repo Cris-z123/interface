@@ -10,8 +10,8 @@
    - `call/bind/apply` 显式调用时，指向指定参数
    - 上下文对象调用时，指向该对象
    - 箭头函数中，指向由外层（函数或全局）作用域决定
-2. bind call apply
-   它们都是用来改变函数的 this 指向的，但是 call 和 apply 是直接进行函数调用的，bind 则是返回一个新的函数，并绑定了新的 this 指向
+2. `bind` `call` `apply`
+   它们都是用来改变函数的 `this` 指向的，但是 `call` 和 `apply` 是直接进行函数调用的，`bind` 则是返回一个新的函数，并绑定了新的 `this` 指向
    ```js
    const target = {};
    fn.call(target, "arg1", "arg2");

@@ -3,11 +3,11 @@
 ## 垂直居中
 
 ## Flex
-justify-content
-align-item
-align-content
-flex-direction
-flex-grow
+* justify-content
+* align-item
+* align-content
+* flex-direction
+* flex-grow
 
 
 ## BFC

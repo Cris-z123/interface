@@ -21,17 +21,23 @@ important! 最高
 
 
 ## 清除浮动
-.clearfix {
+```css
+.clear-fix {
     clear: both;
 }
+```
 
-.clearfix {
+```css
+.clear-fix {
     overflow: hidden;
     zoom: 1;
 }
+```
 
-.clear:after {
+```css
+.clear-fix:after {
     content: '';
     display: block;
     clear: both;
 }
+```

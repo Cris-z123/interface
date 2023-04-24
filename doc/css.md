@@ -3,16 +3,16 @@
 ## 垂直居中
 
 ## Flex
-* justify-content
-* align-item
-* align-content
-* flex-direction
-* flex-grow
+* `justify-content`
+* `align-item`
+* `align-content`
+* `flex-direction`
+* `flex-grow`
 
 
 ## BFC
 块级格式化上下文
-如果我们给一个div写一个overflow: hidden 那么这个div中的浮动元素就会被他包裹起来
+如果我们给一个div写一个 `overflow: hidden` 那么这个div中的浮动元素就会被他包裹起来
 
 ## CSS选择器
 越具体优先级越高

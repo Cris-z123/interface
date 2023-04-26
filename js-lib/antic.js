@@ -22,7 +22,7 @@ const goToTop = () => window.scrollTo(0, 0);
 
 /**
  * 两种方法，来获取特定年份的总周数
- * @param {number} y  年份
+ * @param {Number} y  年份
  */
 
 function computeWeeks(y) {
@@ -49,7 +49,7 @@ const randomColor = () => {
 
 /**
  * 生成星级评分
- * @param {分数} rate 
+ * @param {Number} rate  评分 
  */
 const startScore = rate => {
     "★★★★★☆☆☆☆☆".slice(5 - rate, 10 - rate)

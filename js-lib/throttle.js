@@ -9,16 +9,16 @@
  * 方法二：
  * 1.定义上次触发时间
  * 2.比较两次调用时间差
- * @param {Callback} fn
- * @param {Number}   delay
+ * @param {Function} fn      回调函数
+ * @param {Number}   delay   时间
  */
 function throttle(fn, delay) {
     let timer = null;
-    return function() {
+    return function () {
         let args = arguments;
         let context = this;
-        if(!timer) {
-            timer = setTimeout(()=> {
+        if (!timer) {
+            timer = setTimeout(() => {
                 fn.apply(context, args)
                 clearTimeout(timer)
                 timer = null;
@@ -31,20 +31,20 @@ throttle = (fn, delay) => {
     let last = 0;
     return (...args) => {
         const now = + Date.now();
-        if(now > last + delay) {
+        if (now > last + delay) {
             last = now;
             fn.apply(this, args)
         }
     }
 };
 
-function throttle(fn, delay){
+function throttle(fn, delay) {
     let canUse = true
-    return function(){
-        if(canUse){
+    return function () {
+        if (canUse) {
             fn.apply(this, arguments)
             canUse = false
-            setTimeout(()=>canUse = true, delay)
+            setTimeout(() => canUse = true, delay)
         }
     }
 };

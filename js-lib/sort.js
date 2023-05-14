@@ -23,7 +23,11 @@ console.log(min([8, 7, 5, 1, 3, 2]));
 console.log(minIndex1([8, 7, 5, 1, 3, 2]));
 console.log(sort2([2, 5, 8, 3, 4]));
 
-//选择排序
+/**
+ * 选择排序
+ * 
+ * 
+ */
 let sort = (numbers) => {
   for (let i = 0; i < numbers.length - 1; i++) {
     console.log(`----`);
@@ -56,7 +60,11 @@ let minIndex = (numbers) => {
   return index;
 };
 
-//快速排序
+/**
+ * 快速排序
+ * 
+ * 
+ */
 let quickSort = (arr) => {
   if (arr.length <= 1) {
     return arr;
@@ -75,7 +83,11 @@ let quickSort = (arr) => {
   return quickSort(left).concat([pivot], quickSort(right));
 };
 
-//归并排序
+/**
+ * 归并排序
+ * 
+ * 
+ */
 let mergeSort = (arr) => {
   let k = arr.length;
   if (k === 1) {
@@ -93,7 +105,11 @@ let merge = (a, b) => {
     : [a[0].concat(a.slice(1), b)];
 };
 
-//计数排序
+/**
+ * 计数排序
+ *  
+ * 
+ */
 let countSort = (arr) => {
   let hashTable = {};
   let max = 0;

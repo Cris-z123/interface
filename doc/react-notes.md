@@ -151,11 +151,7 @@
     父组件 render：componentWillReceiveProps -> shouldComponentUpdate(setState()) -> componentWillUpdate(forceUpdate()) -> render -> componentDidUpdate
     卸载：componentWillUnmount
 
-## 受控组件和非受控组件
-
 ## 组件通信
-
-## 生命周期
 
 ## Hooks API
 

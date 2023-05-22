@@ -1,14 +1,14 @@
 //普通搜索
 methods1 = {
-    submitQuery:function(){
+    submitQuery: function () {
         this.query = this.$refs.search.value.trim();
     },
-    queryDate:function(list){
+    queryDate: function (list) {
         if (this.query === '') {
             return list
-        } 
+        }
         return list.filter(item => {
-            if(item.name.indexOf(this.query) != -1){
+            if (item.name.indexOf(this.query) != -1) {
                 return item;
             }
         })
@@ -21,7 +21,7 @@ methods2 = {
         this.query = this.$refs.search.value.trim();
         this.query1 = this.$refs.search1.value.trim();
     },
-    queryDate:function(list){
+    queryDate: function (list) {
         if (this.query === '' && this.query1 === '') {
             return list
         } else if (this.query !== '' && this.query1 === '') {

@@ -129,8 +129,7 @@ module.exports = {
         changeOrigin: true, // 是否跨域
         secure: false,
         pathRewrite: {
-          '^/api': '/api/ctrl', //测试环境
-          // '/api': '', //需要rewrite, 本地联调
+          '^/api': '/api/ctrl', //测试环境 需要rewrite, 本地联调
         },
       },
     },

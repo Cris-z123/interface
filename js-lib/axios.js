@@ -18,7 +18,7 @@ httpService.interceptors.request.use(
             config.headers['User-Token'] = '';
         }
         return config;
-    }, 
+    },
     error => {
         // 请求错误处理
         Promise.reject(error);
@@ -42,7 +42,7 @@ httpService.interceptors.response.use(
     },
     // 处理处理
     error => {
-         if (error && error.response) {
+        if (error && error.response) {
             switch (error.response.status) {
                 case 400:
                     error.message = '错误请求';
@@ -92,11 +92,12 @@ httpService.interceptors.response.use(
 
 /*网络请求部分*/
 
-/*
- *  get请求
- *  url:请求地址
- *  params:参数
- * */
+/**
+ * GET请求
+ * @param {string} url 请求地址
+ * @param {object} params 请求参数
+ * @returns 
+ */
 export function get(url, params = {}) {
     return new Promise((resolve, reject) => {
         httpService({
@@ -111,11 +112,12 @@ export function get(url, params = {}) {
     });
 }
 
-/*
- *  post请求
- *  url:请求地址
- *  params:参数
- * */
+/**
+ * POST请求
+ * @param {string} url 请求地址
+ * @param {object} params 请求参数
+ * @returns 
+ */
 export function post(url, params = {}) {
     return new Promise((resolve, reject) => {
         httpService({
@@ -130,11 +132,12 @@ export function post(url, params = {}) {
     });
 }
 
-/*
- *  文件上传
- *  url:请求地址
- *  params:参数
- * */
+/**
+ * 文件上传
+ * @param {string} url 请求地址
+ * @param {object} params 请求参数
+ * @returns 
+ */
 export function fileUpload(url, params = {}) {
     return new Promise((resolve, reject) => {
         httpService({

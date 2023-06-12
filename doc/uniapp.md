@@ -65,6 +65,14 @@ onReachBottom
 
 <picker-view></picker-view>
 ```
+
+### 注意事项
+1. 除了H5环境，没有BOM和DOM，如果要使用相关API，需通过`renderjs`实现
+2. 要使用新的HTML标签，没有采用标准HTML标签
+3. 使用flex布局，rpx为默认单位
+4. 页面放到`pages`目录，自定义组件放到`component`目录，静态资源放到`static`目录
+
+
 ### 移动端预览文件
 
 ### 富文本编辑器

@@ -54,9 +54,9 @@ findElement([1, 2, 3, 4], (num) => num % 2 === 0);
 
 /**
  * 使用splice和slice将arr1添加到arr2中，从索引为n的位置开始插入
- * @param {*} arr1
- * @param {*} arr2
- * @param {*} n
+ * @param {Array} arr1
+ * @param {Array} arr2
+ * @param {Number} n
  */
 
 //方法1
@@ -83,8 +83,8 @@ frankenSplice([1, 2, 3], [4, 5, 6], 1);
 
 /**
  * 将num插入arr并排序,返回num的索引值.num插入位置为小于它的值且大于它的两个值之间
- * @param {*} arr
- * @param {*} num
+ * @param {Array} arr
+ * @param {Number} num
  */
 
 function getIndexToIns(arr, num) {
@@ -101,8 +101,8 @@ getIndexToIns([40, 60], 50);
 
 /**
  * 返回一个二维数组，以size为长度，分隔arr
- * @param {*} arr
- * @param {*} size
+ * @param {Array} arr
+ * @param {Number} size
  */
 
 //方法1
@@ -146,8 +146,8 @@ titleCase("I'm a little tea pot");
 
 /**
  * diff two arrays
- * @param {*} arr1
- * @param {*} arr2
+ * @param {Array} arr1
+ * @param {Array} arr2
  */
 
 function diffArray(arr1, arr2) {

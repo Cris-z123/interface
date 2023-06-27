@@ -3,30 +3,30 @@
  * 
  * 1.判断定时器是否存在，清除计数器
  * 2.重新调用setTimeout
- * @param {function} fn 
- * @param {number}   delay 
+ * @param {function} fn     回调函数
+ * @param {number}   delay  延时时间
  */
 
 function debounce(fn, delay) {
     let timer;
-    return function() {
+    return function () {
         let context = this;
         let args = arguments;
         timer && clearTimeout(timer);
-        timer = setTimeout(function() {
+        timer = setTimeout(function () {
             fn.apply(context, args)
         }, delay)
     };
 };
 
-function debounce(fn, delay){
+function debounce(fn, delay) {
     let timerId = null
-    return function(){
+    return function () {
         const context = this
-        if(timerId){window.clearTimeout(timerId)}
-        timerId = setTimeout(()=>{
+        if (timerId) { window.clearTimeout(timerId) }
+        timerId = setTimeout(() => {
             fn.apply(context, arguments)
             timerId = null
-        },delay)
+        }, delay)
     }
 }

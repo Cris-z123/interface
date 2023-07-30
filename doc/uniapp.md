@@ -39,30 +39,43 @@ onReachBottom
 ```
 ### 常用组件
 ```html
+<!-- 基础容器 -->
 <view></view>
 
+<!-- 滚动容器 -->
 <scroll-view></scroll-view>
 
+<!-- 滑动容器 -->
 <swiper></swiper>
 
+<!-- 文本容器 -->
 <text></text>
 
+<!-- 图片元素 -->
 <image></image>
 
+<!-- 视频元素 -->
 <video></video>
 
+<!-- 音频元素 -->
 <audio></audio>
 
+<!-- 输入框 -->
 <input></input>
 
+<!-- 按钮 -->
 <button></button>
 
+<!-- 表单 -->
 <form></form>
 
+<!-- 开关元素 -->
 <switch></switch>
 
+<!-- 文本域 -->
 <textarea></textarea>
 
+<!-- 选择组件 -->
 <picker-view></picker-view>
 ```
 

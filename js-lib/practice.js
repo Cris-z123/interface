@@ -1,10 +1,17 @@
+/**
+ * RGB转化为16进制
+ * @param {Number} r 
+ * @param {Number} g 
+ * @param {Number} b 
+ * @returns 
+ */
 function toRGB(r, g, b) {
     function toHex(a) {
-        if(a < 0) {
+        if (a < 0) {
             a = "00"
-        } else if (0 < r < 16){
+        } else if (0 < r < 16) {
             a = "0" + r.toString(16)
-        }else if (16 < r < 255) {
+        } else if (16 < r < 255) {
             a = r.toString(16)
         } else {
             a = "ff"
@@ -18,8 +25,8 @@ function toRGB(r, g, b) {
 function likes(names) {
     leg = names.length
     other = leg - 2
-    switch(leg) {
-        case 0: 
+    switch (leg) {
+        case 0:
             console.log("no one likes this")
             break
         case 1:
@@ -37,8 +44,8 @@ function likes(names) {
 }
 
 function moveZeros(arr) {
-    for(let i=0; i<arr.length; i++) {
-        if(arr[i] === 0) {
+    for (let i = 0; i < arr.length; i++) {
+        if (arr[i] === 0) {
             arr.splice(arr[i], 1).push(0)
         }
     }

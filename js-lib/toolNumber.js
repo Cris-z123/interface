@@ -1,3 +1,8 @@
+/**
+ * 超多数量级数字展示
+ * @param {Number} num 
+ * @returns 
+ */
 function toolNumber(num) {
   let num_str = num.toString();
   if (num_str.indexOf("+") != -1) {

@@ -224,5 +224,9 @@ react hook的上手成本相对于vue会难一些，vue天生规避了一些reac
 ## DOM Diff
 
 ## Redux
-
+1. action: 操作
+2. reducer: 事件监听器，根据action处理事件
+3. store: 基础对象
+4. dispatch: 更新数据
+5. selector: 从 store 状态树中提取指定的片段
 ## 类组件和函数组件

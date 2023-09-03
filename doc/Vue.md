@@ -1,6 +1,6 @@
-## watch 和 computed区别
-1. watch是监听数据 computed是计算属性
-2. watch是没有缓存的，只要每次监听的值变化时它都会执行回调；computed是有缓存的，只有它依赖的属性值的变化时，才会变化
+## watch 和 computed 区别
+1. `watch`是监听数据 `computed`是计算属性
+2. `watch`是没有缓存的，只要每次监听的值变化时它都会执行回调；`computed`是有缓存的，只有它依赖的属性值的变化时，才会变化
 
 ## Vue有哪些生命周期钩子
 * `beforeCreate`   //创建组件时做一些事情

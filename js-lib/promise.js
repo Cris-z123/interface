@@ -95,3 +95,33 @@ const runPromiseSequence = (array, value) =>
   );
 
 runPromiseSequence([fn1, fn2, fn3], "init");
+
+/**
+ * 
+ * @param {Array} urls   请求数组
+ * @param {Number} maxNum 同时最大请求数
+ * @returns 
+ */
+
+function multiRequest(urls, maxNum) {
+  const ret = [];
+  let i = 0;
+  let resolve;
+  const promise = new Promise(r => resolve = r);
+  const addTask = () => {
+    if (i >= arr.length) {
+      return resolve();
+    }
+
+    const task = request(urls[i++]).finally(() => {
+      addTask();
+    });
+    ret.push(task);
+  }
+
+  while (i < maxNum) {
+    addTask();
+  }
+
+  return promise.then(() => Promise.all(ret));
+}

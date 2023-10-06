@@ -88,6 +88,8 @@ Promise.race([fn1(), fn2(), fn3()]).then(function (results) {
   console.log(results);
 });
 
+Promise.then((res) => { console.log(res) }).catch((error) => { console.log(error) }).finally(() => { console.log('结束了') })
+
 const runPromiseSequence = (array, value) =>
   array.reduce(
     (promiseChain, currentFunction) => promiseChain.then(currentFunction),

@@ -79,6 +79,26 @@ onReachBottom
 <picker-view></picker-view>
 ```
 
+### 路由跳转
+```js
+/**
+ * OBJECT
+ * @param {String} url 页面路径
+ * @param {String} animationType 动画
+ * @param {Number} animationDuration 动画时间
+ * @param {Object} events 页面间通信接口
+ * @param {Function} success 成功回调
+ * @param {Function} fail 失败回调
+ * @param {Function} complete 结束时的回调
+ */
+uni.navigateTo(OBJECT) // 保留当前页面，跳转指定页面 
+uni.redirectTo(OBJECT) // 关闭当前页面，跳转指定页面
+uni.reLaunch(OBJECT) // 关闭所有页面，跳转指定页面
+uni.switchTab(OBJECT) // 跳转到tabBar页面，并关闭其他所有非tabBar页面
+uni.navigateBack(OBJECT) // 关闭当前页面，返回上一页面或多级页面
+uni.preloadPage(OBJECT) // 预加载页面
+```
+
 ### 注意事项
 1. 除了H5环境，没有BOM和DOM，如果要使用相关API，需通过`renderjs`实现
 2. 要使用新的HTML标签，没有采用标准HTML标签

@@ -66,3 +66,26 @@ function toolNumber(num) {
     return num_str;
   }
 }
+
+function formatThousandths1(number) {
+  number = Math.floor(number)
+
+  let str = ''
+  let strN = number.toString()
+  let length = strN.length
+
+  for (let i = length - 1; i >= 0; i--) {
+    let j = length - i
+    if (j % 3 === 0) {
+      str = ',' + strN[i] + str
+    } else {
+      str = strN[i] + str
+    }
+  }
+
+  return str
+}
+
+function formatThousandths2(number) {
+  return number.toLocaleString('en-us')
+}

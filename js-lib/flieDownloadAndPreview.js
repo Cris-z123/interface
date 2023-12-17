@@ -17,10 +17,6 @@ function download() {
     link.remove()
 }
 
-
-
-
-
 /**
  * 文件预览
  * 请求url地址

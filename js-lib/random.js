@@ -1,9 +1,9 @@
 function randomRange(myMax, myMin) {
-    return Math.floor(Math.random() * (myMax - myMin + 1)) + myMin
+  return Math.floor(Math.random() * (myMax - myMin + 1)) + myMin
 }
 
 function randomInteger(num) {
-    return Math.floor(Math.random() * num)
+  return Math.floor(Math.random() * num)
 }
 
 // 字符串拼接的空格 "\xa0"
@@ -20,16 +20,16 @@ indexOf()
 map()
 // 以任意顺序遍历一个对象的除Symbol以外的可枚举属性。
 for (const key in object) {
-    if (object.hasOwnProperty(key)) {
-        const element = object[key];
-        
-    }
+  if (object.hasOwnProperty(key)) {
+    const element = object[key];
+
+  }
 };
 for (const iterator of object) {
-    
+
 };
 array.forEach(element => {
-    
+
 });
 
 let arr = [...rest]
@@ -46,7 +46,7 @@ function Animal() { }
 
 Animal.prototype = {
   constructor: Animal,
-  eat: function() {
+  eat: function () {
     console.log("nom nom nom");
   }
 };
@@ -57,12 +57,12 @@ function Animal() { }
 
 Animal.prototype = {
   constructor: Animal,
-  eat: function() {
+  eat: function () {
     console.log("nom nom nom");
   }
 };
 
-let duck = Object.create(Animal.prototype); 
+let duck = Object.create(Animal.prototype);
 let beagle = Object.create(Animal.prototype);
 
 
@@ -71,7 +71,7 @@ function Animal() { }
 
 Animal.prototype = {
   constructor: Animal,
-  eat: function() {
+  eat: function () {
     console.log("nom nom nom");
   }
 };
@@ -80,7 +80,7 @@ function Dog() { }
 
 Dog.prototype = Object.create(Animal.prototype)
 
-let beagle = new Dog();
+let beagle2 = new Dog();
 
 
 //Reset an Inherited Constructor Property
@@ -94,33 +94,33 @@ Dog.prototype = Object.create(Animal.prototype);
 Bird.prototype.constructor = Bird
 Dog.prototype.constructor = Dog
 
-let duck = new Bird();
-let beagle = new Dog();
+let duck2 = new Bird();
+let beagle3 = new Dog();
 
 
 //Add Methods After InheritancePassed
 function Animal() { }
-Animal.prototype.eat = function() { console.log("nom nom nom"); };
+Animal.prototype.eat = function () { console.log("nom nom nom"); };
 
 function Dog() { }
 Dog.prototype = Object.create(Animal.prototype)
 Dog.prototype.constructor = Dog
-Dog.prototype.bark = function() {
-    console.log("Woof!")
+Dog.prototype.bark = function () {
+  console.log("Woof!")
 }
 
-let beagle = new Dog();
+let beagle4 = new Dog();
 
 
 //Override Inherited Methods
 function Bird() { }
-Bird.prototype.fly = function() { return "I am flying!"; };
+Bird.prototype.fly = function () { return "I am flying!"; };
 
 function Penguin() { }
 Penguin.prototype = Object.create(Bird.prototype);
 Penguin.prototype.constructor = Penguin;
-Penguin.prototype.fly = function() {
-    return "Alas, this is a flightless bird."
+Penguin.prototype.fly = function () {
+  return "Alas, this is a flightless bird."
 }
 
 let penguin = new Penguin();
@@ -140,8 +140,8 @@ let boat = {
 };
 
 
-let glideMixin = function(obj) {
-  obj.glide = function() {
+let glideMixin = function (obj) {
+  obj.glide = function () {
     console.log("Flying, wooosh!")
   }
 }
@@ -152,7 +152,7 @@ glideMixin(boat)
 //Use Closure to Protect Properties Within an Object from Being Modified Externally
 function Bird() {
   let weight = 15;
-  this.getWeight = function(){
+  this.getWeight = function () {
     return weight
   }
 }
@@ -161,29 +161,29 @@ let redBird = new Bird
 redBird.getWeight()
 
 
-//Understand the Immediately Invoked Function Expression (IIFE)
-(function() {
-  console.log("A cozy nest is ready");
-})()
+  //Understand the Immediately Invoked Function Expression (IIFE)
+  (function () {
+    console.log("A cozy nest is ready");
+  })()
 
 
 //Use an IIFE to Create a Module
-let funModule = (function(){
+let funModule = (function () {
   return {
-    isCuteMixin: function(obj) {
-      obj.isCute = function() {
+    isCuteMixin: function (obj) {
+      obj.isCute = function () {
         return true;
       };
     },
-    singMixin: function(obj) {
-      obj.sing = function() {
+    singMixin: function (obj) {
+      obj.sing = function () {
         console.log("Singing to an awesome tune");
       };
     }
   }
 })()
 
-let duck = {}
+let duck3 = {}
 
-funModule.singMixin(duck)
-duck.sing()
+funModule.singMixin(duck3)
+duck3.sing()

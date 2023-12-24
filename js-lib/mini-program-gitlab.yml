@@ -1,0 +1,35 @@
+before_script:
+  - date
+  - npm - v
+  - node - v
+  - npm install
+  - cp.env.example.env
+
+after_script:
+  - date
+
+stages:
+  - deploy
+
+cache:
+  paths:
+    - ./ node_modules
+
+deploy:
+  stage: deploy
+  except:
+    - tags
+  script:
+    - npm run build
+    - VERSION=`node -p "require('./package.json').version"` #获取package.json版本号
+    - DESCRIPTION=`git log -1 --pretty=format:%s` #获取最近一次git提交信息
+    - node ./tool/upload.js $VERSION $DESCRIPTION #执行
+
+production:
+  stage: deploy
+  only:
+    - tags
+  script:
+    - npm run build
+    - DESCRIPTION=`git log -1 --pretty=format:%s`
+    - node./ tool / upload.js $CI_BUILD_TAG $DESCRIPTION

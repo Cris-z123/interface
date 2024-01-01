@@ -25,11 +25,12 @@ if (!isChina(commitMsg)) {
 // 创建项目对象
 const project = new ci.Project({
     appid: '******',  // 小程序appid
-    type: 'miniProgram',  // 类型，小程序或小游戏
+    type: 'miniProgram',  // 类型
     projectPath: path.join(__dirname, projectPath), // 项目路径
     privateKeyPath: path.join(__dirname, './private.********.key'),  // 密钥路径
     ignores: ['node_modules/**/*'],  // 忽略的文件
 })
+
 // 调用上传方法
 ci.upload({
     project,

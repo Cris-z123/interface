@@ -5,7 +5,7 @@
     前置守卫：
         1. 全局的前置守卫： beforeEach beforeResolve（同时在所有组件内守卫和异步路由组件被解析之后，解析守卫就被调用）
         2. 路由独享的守卫： beforeEnter
-        3. 组件内的守卫：   beforeRouterEnter、beforeRouterUpdate、beforeRouteLeave
+        3. 组件内的守卫： beforeRouterEnter、beforeRouterUpdate、beforeRouteLeave
     后置守卫：
         全局的后置守卫： afterEach
 */
@@ -13,16 +13,16 @@
 // 前置的全局路由守卫，验证token
 router.beforeEach((to, from, next) => {
     let token = localStorage.getItem('token');
-    if(token) {
-        if(to.path === '/' || to.path === '/login') {
+    if (token) {
+        if (to.path === '/' || to.path === '/login') {
             next('/xxx');
-        }else {
+        } else {
             next();
         }
-    }else {
-        if(to.path === '/') {
+    } else {
+        if (to.path === '/') {
             next();
-        }else {
+        } else {
             next('/');
         }
     }
@@ -31,13 +31,13 @@ router.beforeEach((to, from, next) => {
 // 前置的全局路由守卫，验证token, 通过并添加动态路由
 router.beforeEach((to, from, next) => {
     const token = store.state.user.token || '';
-    if(token) {
-        if(to.path === '/userlogin/login') {
+    if (token) {
+        if (to.path === '/userlogin/login') {
             next({
                 path: '/'
             })
         } else {
-            if(store.getters.username.length === 0) {
+            if (store.getters.username.length === 0) {
                 store.dispatch('permission/GenerateRoutes')
                     .then(() => {
                         router.addRouters(store.getters.addRouters)
@@ -54,7 +54,7 @@ router.beforeEach((to, from, next) => {
             }
         }
     } else {
-        if(to.path.includes('/userlogin')) {
+        if (to.path.includes('/userlogin')) {
             next()
         } else {
             next('/userlogin')

@@ -1,7 +1,7 @@
 // 使用axios，处理登陆情况
-import axios from  'axios'
+import axios from 'axios'
 
-let instance  = axios.create({
+let instance = axios.create({
     baseURL: 'api/xxx/'
 })
 
@@ -24,7 +24,7 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
     response => { response },
     error => {
-        if(error.response.status === 401) {
+        if (error.response.status === 401) {
             MessageBox.confirm = ('登录过期,请重新登陆', '确定登出', {
                 confirmButtonText: '重新登录',
                 type: 'warning'
@@ -46,12 +46,12 @@ export function get(url, params) {
         instance.get(url, {
             params
         })
-          .then(response => {
-              resolve(response);
-          })
-          .catch(error => {
-              reject(error);
-          })
+            .then(response => {
+                resolve(response);
+            })
+            .catch(error => {
+                reject(error);
+            })
     })
 }
 
@@ -59,11 +59,11 @@ export function get(url, params) {
 export function post(url, params) {
     return new Promise((resolve, reject) => {
         instance.post(url, params)
-          .then(response => {
-              resolve(response);
-          })
-          .catch(error => {
-              reject(error);
-          })
+            .then(response => {
+                resolve(response);
+            })
+            .catch(error => {
+                reject(error);
+            })
     })
 }

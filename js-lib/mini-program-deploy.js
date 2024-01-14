@@ -1,3 +1,10 @@
+/**
+ * 方案说明
+ * 使用miniprogram工具上传微信小程序
+ * 后续使用husky 规范化commit格式
+ * 接入ci cd 根据commit内容，动态设置package.json中的版本号，作为小程序的版本号
+ * 并将commit的内容作为版本描述上传
+ */
 const ci = require('miniprogram-ci')
 const path = require('path');
 const call = async (bin, args) => (await execa(bin, args)).stdout

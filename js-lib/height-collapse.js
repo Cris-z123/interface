@@ -11,10 +11,10 @@
 const input = document.getElementById("input");
 let scrollTop = 0;
 
-input.addEventListener("focus", ()=> {
+input.addEventListener("focus", () => {
     scrollTop = document.scrollingElement.scrollTop;
 });
 
-input.addEventListener("blur", ()=> {
+input.addEventListener("blur", () => {
     document.scrollingElement.scrollTo(0, this.scrollTop);
 });

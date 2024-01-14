@@ -1,8 +1,8 @@
 function deepClone1(obj) {
     let target = {};
-    for(let key in obj) {
-        if(Object.prototype.hasOwnProperty.call(obj, key)) {
-            if(typeof obj[key] === 'object') {
+    for (let key in obj) {
+        if (Object.prototype.hasOwnProperty.call(obj, key)) {
+            if (typeof obj[key] === 'object') {
                 target[key] = deepClone(obj[key]);
             } else {
                 target[key] = obj[key]
@@ -25,13 +25,13 @@ function deepClone2(obj) {
  */
 
 function deepClone(target) {
-    if(typeof target === 'object') {
+    if (typeof target === 'object') {
         let cloneTarget = Array.isArray(target) ? [] : {};
-        if(map.get(target)) {
+        if (map.get(target)) {
             return Map.get(target)
         }
         map.set(target, cloneTarget)
-        for(const key in target) {
+        for (const key in target) {
             cloneTarget[key] = deepClone(target[key]);
         }
         return cloneTarget;

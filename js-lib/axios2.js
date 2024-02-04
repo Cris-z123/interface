@@ -26,13 +26,13 @@ instance.interceptors.request.use(
 instance.interceptors.response.use(
     res => response.status === 200 ? Promise.resolve(res) : Promise.reject(res),
     error => {
-        if(error.response.status) {
+        if (error.response.status) {
             switch (error.response.status) {
                 case 401:
                     router.replace({
                         path: '/login',
                         query: {
-                            redirect: router.current 
+                            redirect: router.current
                         }
                     });
                     break;
@@ -87,11 +87,11 @@ export function get(url, params) {
 export function post(url, params) {
     return new Promise((resolve, reject) => {
         instance.post(url, QS.stringify(params))
-        .then(res => {
-            resolve(res.data)
-        })
-        .catch(err => {
-            reject(err.data)
-        })
+            .then(res => {
+                resolve(res.data)
+            })
+            .catch(err => {
+                reject(err.data)
+            })
     })
 };

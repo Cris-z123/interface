@@ -3,7 +3,6 @@
  * 
  * routerFiler是负责路由跳转前的公共操作
  * 
- * 
  * @param {*路径} path 
  * @param {*参数} params 
  * @param {*事件} events 
@@ -69,7 +68,6 @@ const switchTab = (path) => {
 /**
  * 对于微信接口请求进行的Promise封装
  * 
- * 
  */
 
 const app1 = getApp()
@@ -86,13 +84,11 @@ const request1 = (method, url, data) => {
             data: data,
             header: header,
             success(res) {
-
-
                 resolve(res.data);
             },
             fail(err) {
                 wx.showToast({
-                    title: '网络异常，请稍后再试',
+                    title: err || '网络异常，请稍后再试',
                     mask: true,
                     icon: 'none',
                     duration: 3000
@@ -105,19 +101,16 @@ const request1 = (method, url, data) => {
 /**
  * 微信的请求和响应拦截
  * 
- * 
  */
 
 const app2 = getApp();
 
 const request2 = (method, url, data) => {
-
     return new Promise((resolve, reject) => {
         wx.request({
-
             success(res) {
-                if(res.statusCode === 200) {
-                    if(res.data && res.data.code === "SUCCESS") {
+                if (res.statusCode === 200) {
+                    if (res?.data?.code === "SUCCESS") {
                         resolve(res.data)
                     } else {
                         formatError(res)
@@ -129,7 +122,7 @@ const request2 = (method, url, data) => {
             },
             fail(err) {
                 wx.showToast({
-                    title: '网络异常，请稍后再试',
+                    title: err || '网络异常，请稍后再试',
                     mask: true,
                     icon: 'none',
                     duration: 3000

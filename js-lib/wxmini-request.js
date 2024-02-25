@@ -8,12 +8,10 @@ const FORM = "FORM";
 const DELETE = "DELETE";
 
 // 系统域名
-const baseURL = "https://www.mools.net";
+const baseURL = "";
 
 /**
- * @name: 用户请求方法，使用promise实现
- * @author: camellia
- * @date: 2021-11-08
+ * 用户请求方法，使用promise实现
  * @param {*} method 请求方式
  * @param {*} url 请求连接
  * @param {*} data 请求数据

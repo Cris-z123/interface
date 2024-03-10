@@ -41,3 +41,16 @@
     }
    ```
 5. 联合类型
+   ```ts
+     interface IUser {
+        info:
+          | {
+              vip: true;
+              expires: string;
+            }
+          | {
+              vip: false;
+              promotion: string;
+          };
+    }
+   ```

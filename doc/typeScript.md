@@ -51,6 +51,6 @@
           | {
               vip: false;
               promotion: string;
-          };
+            };  
     }
    ```

@@ -70,9 +70,9 @@ function chunk(array, size) {
 
 /**
  * 二叉树的前序遍历
- * @param {*} val 
- * @param {*} left 
- * @param {*} right 
+ * @param {*} val
+ * @param {*} left
+ * @param {*} right
  */
 function TreeNode(val, left, right) {
     this.val = (val === undefined ? 0 : val)

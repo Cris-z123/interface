@@ -31,15 +31,16 @@ const request = (obj) => {
             data: obj.data,
             header: {
                 'TOKEN': token,
-                'Content-Type': obj.header
+                'Content-Type': obj.header,
+                ...obj.other
             },
             success: res => { // 服务器成功返回的回调函数
                 if (res.statusCode === 200) {
                     let result = res.data;
-                    if (result.code === 20000) { // 跟后端约定的code
+                    if (result.code === '') { // 跟后端约定的code
                         resolve(result);
                         return;
-                    } else if (result.code === 40005) { // 跟后端约定的code
+                    } else if (result.code === '') { // 跟后端约定的code
                         store.dispatch('user/logout'); // 清空token
                         reject(result);
                         uni.redirectTo({
@@ -51,7 +52,7 @@ const request = (obj) => {
                             success: function (res) { }
                         });
                         return;
-                    } else if (result.code === 50009) { // 跟后端约定的code
+                    } else if (result.code === '') { // 跟后端约定的code
                         loadingStatus = false
                         showToast(result.msg);
                         reject(result);
@@ -67,8 +68,8 @@ const request = (obj) => {
             fail: (err) => { // 接口调用失败的回调函数
                 if (err.errMsg != 'request:fail abort') {
                     loadingStatus = false
-                    showToast('连接超时，请检查您的网络。');
-                    reject('连接超时，请检查您的网络。');
+                    showToast('连接超时，请检查您的网络');
+                    reject('连接超时，请检查您的网络');
                 }
             },
             complete: () => {

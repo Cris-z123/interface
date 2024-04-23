@@ -49,7 +49,9 @@ const request = (obj) => {
                         uni.showModal({
                             showCancel: false,
                             content: '登录过期',
-                            success: function (res) { }
+                            success: function (res) {
+                                // todo
+                            }
                         });
                         return;
                     } else if (result.code === '') { // 跟后端约定的code

@@ -9,15 +9,15 @@
   1. 用实际的工具强制落地规则，如 `Eslint`，用文档辅助
   2. 清晰的目录结构
   3. 好的命名风格
-     | | 命名规范 |
-     | ------ | ------ |
-     | 常量 | TASK_EVENTS |
-     | 类 | Task |
-     | 类型 | ITask |
-     | css | task-page-menu |
-     | 变量 | taskList |
-     | 方法 | onSubmit |
-     | 文件 | edit-task.ts |
+     |      | 命名规范         |
+     | ---- | ---------------- |
+     | 常量 | TASK_EVENTS      |
+     | 类   | Task             |
+     | 类型 | ITask            |
+     | css  | task-page-menu   |
+     | 变量 | taskList         |
+     | 方法 | onSubmit         |
+     | 文件 | edit-task.ts     |
      | i18n | task_status_stop |
 
   - 不用 data、flag、ok、info 这类空泛的命名
@@ -25,7 +25,8 @@
   - 类/对象内部命名无需携带主体
   - 使用 be + adj.表达状态
   - 只在该注释的地方注释
-  - 配置分离（`provide` `inject`
+  - 配置分离（`provide` `inject`)
+  - 减少重复
 
   > be 动词包括：is、am、are、was、were、being、been、to be
 
@@ -34,3 +35,6 @@
 - 动态组件插入
 - 大数据表格：`canvas` 表格绘制
 - Git 子模块
+- Monorepo
+- pnpm、yarn
+- 提取公共组件、工具类

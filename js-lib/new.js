@@ -24,7 +24,6 @@ function myNew2() {
 
   newObject = Object.create(constructor.prototype);
   result = constructor.apply(newObject, arguments);
-  let flag =
-    result && (typeof result === "object" || typeof result === "function");
+  let flag = result && (typeof result === "object" || typeof result === "function");
   return flag ? result : newObject;
 }

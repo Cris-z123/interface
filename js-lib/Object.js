@@ -1,10 +1,12 @@
 /**
- * 使用class关键字来创建Thermostat类，它的构造函数应该可以接收华氏温度作为参数。
+ * js 类
+ * 使用class关键字来创建Thermostat类
+ * 它的构造函数应该可以接收华氏温度作为参数
  */
 
 class Thermostat {
     constructor(temp) {
-        this._temp = 5/9 * (temp - 32);
+        this._temp = 5 / 9 * (temp - 32);
     }
 
     get temperature() {

@@ -1,11 +1,11 @@
 /**
- * Promise
- * 使用Promise来进行异步操作
- * 异步执行的具体过程，是通过浏览器的内核c++实现的，并不是js语言
- * resolve 执行成功的返回值，可以在回调函数中接收到该值
- * reject 执行失败的返回值，也可以在回调函数中接收到该值
- * then 和 catch 都是回调函数，可以分别接受成功和失败的回调值
- */
+* Promise
+* 使用Promise来进行异步操作
+* 异步执行的具体过程，是通过浏览器的内核c++实现的，并不是js语言
+* resolve 执行成功的返回值，可以在回调函数中接收到该值
+* reject 执行失败的返回值，也可以在回调函数中接收到该值
+* then 和 catch 都是回调函数，可以分别接受成功和失败的回调值
+*/
 function fn1() {
   const a = new Promise(function (resolve, reject) {
     setTimeout(function () {
@@ -70,7 +70,7 @@ fn4();
 fn4()
   .then(function (data) {
     console.log(data);
-    console.log(我还没被定义);
+    console.log("我还没被定义");
   })
   .catch(function (reason) {
     console.log(reason);
@@ -111,7 +111,7 @@ function multiRequest(urls, maxNum) {
   let resolve;
   const promise = new Promise(r => resolve = r);
   const addTask = () => {
-    if (i >= arr.length) {
+    if (i >= ret.length) {
       return resolve();
     }
 

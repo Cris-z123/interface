@@ -20,6 +20,7 @@ const request = (method, url, data) => {
     return new Promise(function (resolve, reject) {
         let header = {
             "content-type": "application/json",
+            // 增加其他请求头
         };
         var requestData = data;
         if (method == "POST") {
@@ -41,11 +42,11 @@ const request = (method, url, data) => {
                     // 关闭loading效果
                     wx.hideLoading();
                 }
-                else if (result.data.code == -200) {
+                else if (result.data.code === 200) {
                     // 系统错误
                     wx.showToast(result.data.msg); return;
                 }
-                else if (result.data.code == -201) {
+                else if (result.data.code === 201) {
                     // 登录失效
                     app.userLogin();
                 }

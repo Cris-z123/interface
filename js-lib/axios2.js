@@ -42,7 +42,7 @@ instance.interceptors.response.use(
                         duration: 1000,
                         forbidClick: true
                     });
-                    localStorage.removeItem('token');
+                    localStorage.removeItem('token'); // 自定义名称（token），在登录过程中保存在本地
                     store.commit('loginSuccess', null);
                     setTimeout(() => {
                         router.replace({
@@ -62,7 +62,7 @@ instance.interceptors.response.use(
                     break;
                 default:
                     Toast({
-                        message: error.response.data.mes,
+                        message: error.response.data.mes, // 字段可根据实际情况取
                         duration: 1500,
                         forbidClick: true
                     })

@@ -39,7 +39,7 @@ multiply()
 multiply(value)
 multiply(value)
 
-const myPromise = Promise.resolve(Promise.resolve('Promise!'))
+const myPromise = Promise.resolve(Promise.resolve('My Promise!!!'))
 
 function funOne() {
     myPromise.then(res => res).then(res => console.log(res))

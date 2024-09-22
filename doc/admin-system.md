@@ -1,5 +1,6 @@
 Vue2.X Vue-Router Vuex ElementUi Axios Echart
 Vue2.X Vue-Router Vuex AntD Axios AntV DartSass
+qiankun（可选）
 
 1. 单点登录
 2. 用户管理
@@ -14,11 +15,13 @@ Vue2.X Vue-Router Vuex AntD Axios AntV DartSass
 - 单点登录
 - 权限管理
 - 属性数据展示
+- 自定义主题
 
 1. 登录注册
 2. 用户权限管理
    - 路由权限
    - 按钮权限
+   - 数据权限
 3. 业务视图
    - 表单
    - 表格

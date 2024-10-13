@@ -54,3 +54,8 @@
             };  
     }
    ```
+6. 断言
+   * `as any as` 双重断言
+   * `a!: string` 非空断言
+7. 交叉类型
+   * `type Person = A & B;` // A B分别为一个类型，Person成为它们并集

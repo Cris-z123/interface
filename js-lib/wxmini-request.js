@@ -35,7 +35,7 @@ const request = (method, url, data) => {
             header: header,
             success(result) {
                 //请求成功
-                //判断状态码---errCode状态根据后端定义来判断
+                //判断状态码---errCode状态与后端统一约定
                 if (result.data.code > 0) {
                     // 返回值正常
                     resolve(result);
@@ -47,7 +47,7 @@ const request = (method, url, data) => {
                     wx.showToast(result.data.msg); return;
                 }
                 else if (result.data.code === 201) {
-                    // 登录失效
+                    // 登录失效, 自定义处理
                     app.userLogin();
                 }
                 else {

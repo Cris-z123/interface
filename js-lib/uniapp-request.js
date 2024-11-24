@@ -1,7 +1,9 @@
+// 可通过环境变量配置
 const base_url = {
     PROD: '', // 生产环境地址
     DEV: ''   // 开发环境地址
 }
+// 可自定义配置
 const showToast = (title) => {
     uni.showToast({
         title: title,

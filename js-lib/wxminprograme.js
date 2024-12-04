@@ -72,7 +72,7 @@ const switchTab = (path) => {
 
 const app1 = getApp()
 
-const request1 = (method, url, data) => {
+const request1 = (method, url, data, param) => {
     const header = {
 
     }
@@ -80,9 +80,9 @@ const request1 = (method, url, data) => {
     return new Promise((resolve, reject) => {
         wx.request({
             method: method,
-            url: app.globalData.host + url,
+            url: app.globalData.host + url, // 可通过环境变量设置域名
             data: data,
-            header: header,
+            header: Object.assign(header, param),
             success(res) {
                 resolve(res.data);
             },
@@ -90,8 +90,11 @@ const request1 = (method, url, data) => {
                 wx.showToast({
                     title: err || '网络异常，请稍后再试',
                     mask: true,
-                    icon: 'none',
-                    duration: 3000
+                    icon: 'error',
+                    duration: 3000,
+                    complete: () => {
+                        return reject(err)
+                    }
                 })
             }
         })
@@ -124,7 +127,7 @@ const request2 = (method, url, data) => {
                 wx.showToast({
                     title: err || '网络异常，请稍后再试',
                     mask: true,
-                    icon: 'none',
+                    icon: 'error',
                     duration: 3000
                 })
             }

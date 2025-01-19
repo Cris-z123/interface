@@ -1,3 +1,4 @@
+
 1. ts 接口和类型别名的区别
 2. ts 强制断言
 3. ts 泛型赋值
@@ -8,6 +9,16 @@
   * 同源`same-site`：scheme、主机域名、端口相同
   * 同站`same-origin`：scheme、部分域名+有效顶级域名(eTLD+1)相同eTLD: (effective top-level domain) 有效顶级域名，注册于 Mozilla 维护的公共后缀列表（PublicSuffix List）中,如.com、.co.uk、.github.io,.top 等eTLD+1: 有效顶级域名+二级域名，如 taobao.com,baidu.com,sugarat.top
 8. PWA `ServiceWork` 实现前端缓存及其他前端缓存的方式
+    * Service Worker 是一种运行在浏览器后台的脚本，独立于网页文档之外，主要用于拦截和处理网络请求。它通过以下生命周期事件实现缓存功能：
+      1. install：在 Service Worker 安装时，可以缓存静态资源
+      2. activate：在 Service Worker 激活时，可以清理旧版本的缓存
+      3. fetch：拦截网络请求，优先从缓存中返回资源
+    * Service Worker 提供了多种缓存策略，可以根据业务需求选择合适的策略：
+      1. Cache-First（缓存优先）优先从缓存中获取资源，如果缓存中没有，则从网络请求;
+      2. Network-First（网络优先）优先从网络请求资源，如果网络请求失败，则返回缓存中的资源;
+      3. Stale-While-Revalidate（缓存更新）立即返回缓存中的资源，同时在后台更新缓存;
+      4. Network-Only（仅网络）始终从网络请求资源，不使用缓存;
+      5. Cache-Only（仅缓存）始终从缓存中获取资源，不发起网络请求
 9.  `npm install` 经历了什么
     1. 检查config
     2. 获取包信息

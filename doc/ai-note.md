@@ -24,3 +24,8 @@
    学习基本的机器学习
 4. 深度学习
 5. python基础与pytorchAI框架
+6. RAG应用搭建
+   RAG应用：检索（Retrieval）：当用户提出问题时，从外部知识库（如文档、数据库等）中检索与问题最相关的片段或数据。增强（Augmented Generation）：将检索到的信息与用户输入的问题结合，输入到大语言模型（如GPT、T5等），生成响应。
+   * 搭建环境：conda搭建python运行环境，使用（LlamaIndex: 适合RAG，LangChain：适合Agent）框架搭建RAG应用
+   * 收集数据（多模态），搭建向量数据库（开源例如：Chroma、Milvus、Qdrant），将多模态数据转换为向量并持久化
+   * 根据大模型响应数据，搭建前端应用

@@ -38,3 +38,5 @@
 - Monorepo
 - pnpm、yarn
 - 提取公共组件、工具类
+- 跨应用通信，定义统一的通信协议和接口
+- 预加载技术、Service Worker缓存

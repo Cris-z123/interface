@@ -36,6 +36,7 @@ router.beforeEach((to, from, next) => {
                 path: '/'
             })
         } else {
+            // 实现权限页面功能
             if (store.getters.username.length === 0) {
                 store.dispatch('permission/GenerateRoutes')
                     .then(() => {

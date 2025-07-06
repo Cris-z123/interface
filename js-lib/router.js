@@ -31,6 +31,7 @@ router.beforeEach((to, from, next) => {
 router.beforeEach((to, from, next) => {
     const token = store.state.user.token || '';
     if (token) {
+        // 自定义跳转，一般是登录页
         if (to.path === '/userlogin/login') {
             next({
                 path: '/'

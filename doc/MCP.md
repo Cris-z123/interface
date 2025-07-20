@@ -10,3 +10,42 @@
     2. 工具型​​：执行操作（如发邮件、查天气）。
     3. 提示型​​：提供预设模板（如生成周报）。
 ​* ​通信机制​​支持本地（STDIO）与远程（HTTP+SSE）连接，消息格式采用JSON-RPC 2.0，确保跨平台兼容性。
+
+```py
+from mcp.server import FastMCP
+import httpx
+
+app = FastMCP('web-search')  # 初始化服务
+
+@app.tool()
+async def web_search(query: str) -> str:
+    """执行网络搜索并返回总结"""
+    async with httpx.AsyncClient() as client:
+        # 实际中替换为你的搜索 API（如 SERP API）
+        response = await client.get(f"https://api.search.com?q={query}")
+        return response.json()["summary"]
+    
+if __name__ == "__main__":
+    app.run(transport="stdio")  # 使用 stdio 通信
+```
+
+```py
+from mcp.client.stdio import stdio_client
+from mcp import ClientSession
+import asyncio
+
+async def main():
+    # 配置服务器启动命令
+    server_params = {"command": "uv", "args": ["run", "web_search.py"]}
+    
+    async with ClientSession(stdio_client(server_params)) as session:
+        # 列出可用工具
+        tools = await session.list_tools()
+        print(f"可用工具: {[t.name for t in tools]}")
+        
+        # 调用搜索工具
+        result = await session.execute_tool("web_search", {"query": "MCP 协议是什么？"})
+        print(f"结果: {result}")
+
+asyncio.run(main())
+```

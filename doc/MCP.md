@@ -49,3 +49,7 @@ async def main():
 
 asyncio.run(main())
 ```
+## 开源工具
+* OpenAI Agents SDK	生产级Agent开发，原生支持MCP
+* MCP Python SDK	快速构建自定义MCP服务端
+* LangChain MCP Adapters	已有LangChain项目扩展工具调用能力

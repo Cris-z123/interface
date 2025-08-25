@@ -59,3 +59,25 @@
    * 为Agent编写清晰的系统提示词，以指导其行为和响应方式。例如，在旅游助手应用中，提示词可以是“你是一个专业的旅游顾问，能够根据用户的需求提供旅行建议和信息”。根据应用场景，集成必要的工具和API以扩展Agent的能力。
    * 在开发平台上实现Agent的业务逻辑，包括：定义工作流：设置Agent的工作流程，包括如何接收用户输入、调用工具和生成响应。配置模型：选择合适的语言模型，并根据* 需要进行微调或优化。处理用户输入：编写代码以解析用户输入，并根据输入内容调用相应的函数或工具。
    * 测试与优化：尝试多agent、prompt工程以及微调模型
+   * ​​工具集成（MCP协议）​​使用MCP Server标准化接入外部工具（如搜索、数据库）：
+   ```py
+     from mcp_client import MCPClient, load_mcp_tools
+     
+     async def init_tools():
+     # 连接Tavily搜索的MCP Server
+     tools = await load_mcp_tools(
+      server_config={"command": "npx", "args": ["@tavily/mcp-server"]}
+     )
+      return tools
+   ```
+   ​​Agent构建与任务执行​​
+   ```py
+   from langchain.agents import create_react_agent
+   from langchain_openai import ChatOpenAI
+
+   llm = ChatOpenAI(model="gpt-4")
+   tools = await init_tools()  # 加载MCP工具
+
+   agent = create_react_agent(llm, tools, prompt="你是一个数据分析助手")
+   response = agent.run("查询2025年AI领域趋势并总结")
+   ```

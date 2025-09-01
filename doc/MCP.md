@@ -53,3 +53,35 @@ asyncio.run(main())
 * OpenAI Agents SDK	生产级Agent开发，原生支持MCP
 * MCP Python SDK	快速构建自定义MCP服务端
 * LangChain MCP Adapters	已有LangChain项目扩展工具调用能力
+
+## 一些MCP服务
+
+### 数据库交互
+这类服务让LLM能直接与数据库对话，用自然语言查询数据。
+
+• ​​MongoDB MCP Server​​：轻松实现MongoDB这类NoSQL数据库的无缝集成。
+
+• ​​MySQL MCP Server​​：提供MySQL数据库集成，通常具有可配置的访问控制和模式检查功能。
+
+### 网络搜索
+为LLM注入实时搜索能力，基于最新信息生成回答，减少模型“幻觉”。
+
+• ​​Tavily MCP​​：提供快速且免费的JSON格式搜索结果，让数据对接更轻松。
+
+• ​​WebSearch​​：一个无需API密钥即可使用Google搜索结果进行免费网络搜索的MCP服务。
+
+### 文件与知识管理
+高效存储、检索和管理信息，适合长期存储和个性化偏好设置。
+
+• ​​Filesystem MCP Server​​：基础且实用，允许通过MCP完成各类文件系统操作。
+
+• ​​Memory MCP Server​​：为AI系统集成记忆功能，常用于基于知识图谱的持久化记忆系统，维持上下文。
+
+### 编程与开发工具
+为开发者提供代码生成、运行与调试支持，助力自动化开发流程。
+
+• ​​Python MCP Server​​：允许执行Python代码，管理运行时环境。
+
+• ​​JavaScript MCP Server​​：为JavaScript开发流程提供支持。
+
+• ​​GitHub MCP Connector​​：使AI能够与代码库和API交互，例如自动生成提交信息，减少代码审查时间。

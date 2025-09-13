@@ -32,6 +32,7 @@ type:
 * refactor: 重构
 * test: 增加测试
 * chore: 构建过程或辅助工具的变动
+* 其他可自定义
 
 scope:
 影响的范围

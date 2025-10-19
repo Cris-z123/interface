@@ -75,9 +75,9 @@
    from langchain.agents import create_react_agent
    from langchain_openai import ChatOpenAI
 
-   llm = ChatOpenAI(model="gpt-4")
+   llm = ChatOpenAI(model="gpt-4") # 可替换各种模型
    tools = await init_tools()  # 加载MCP工具
 
-   agent = create_react_agent(llm, tools, prompt="你是一个数据分析助手")
-   response = agent.run("查询2025年AI领域趋势并总结")
+   agent = create_react_agent(llm, tools, prompt="你是一个专业的xx助手")
+   response = agent.run("查询当天的天气") # 自定义提示词
    ```

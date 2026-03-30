@@ -8,11 +8,14 @@
 基础命令：
     * `docker pull`: 拉取镜像
     * `docker build`：构建镜像
-    * `docker run`：运行镜像
+    * `docker run`：创建并启动一个新容器
     * `docker ps`：查看容器列表
     * `docker images`：查看镜像列表
     * `docker stop`：停止镜像
-    * `docker rm`：移除镜像
+    * `docker rm`：移除容器
+    * `docker rmi`：移除镜像
+    * `docker exec`: 在运行的容器里执行命令
+    * `docker logs`: 查看日志
 
 ## 核心概念
     * 镜像（images）：软件包 即源代码

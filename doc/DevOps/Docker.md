@@ -21,3 +21,7 @@
     * 镜像（images）：软件包 即源代码
     * 容器（container）：运行中的软件
     * 仓库（registry）：应用商店 即镜像商店
+
+
+## Docker-compose
+Docker 官方提供的容器编排工具，用于定义和运行多容器 Docker 应用。

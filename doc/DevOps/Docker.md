@@ -24,4 +24,14 @@
 
 
 ## Docker-compose
-Docker 官方提供的容器编排工具，用于定义和运行多容器 Docker 应用。
+Docker 官方提供的容器编排工具，用一个 YAML 配置文件，描述你的整个应用架构，用于定义和运行多容器 Docker 应用。
+主要用于单机的服务编排。
+
+| 命令                              | 作用         |
+| ------------------------------- | ---------- |
+| `docker-compose up`             | 构建并启动所有服务  |
+| `docker-compose down`           | 停止并移除容器、网络 |
+| `docker-compose ps`             | 查看运行状态     |
+| `docker-compose logs`           | 查看日志       |
+| `docker-compose build`          | 重新构建镜像     |
+| `docker-compose exec <服务> bash` | 进入容器内部     |

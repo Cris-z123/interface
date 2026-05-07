@@ -14,7 +14,15 @@
     HGET user:1 name
     HGETALL user:1
 #### List（队列/栈）
-
+    LPUSH
+    RPUSH
+    LPOP
+    RPOP
+    BLPOP
 #### Set（集合）
-
+    SADD
+    SERM
+    SINTER
 #### Sorted Set(ZSet)（有序集合）
+    ZADD
+    ZREM

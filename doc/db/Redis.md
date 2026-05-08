@@ -14,15 +14,15 @@
     HGET user:1 name
     HGETALL user:1
 #### List（队列/栈）
-    LPUSH
+    LPUSH ("queue:task", "task-A", "task-B", "task-C")
     RPUSH
     LPOP
     RPOP
     BLPOP
 #### Set（集合）
-    SADD
+    SADD ("tags:post:1", "Python", "Redis", "后端")
     SERM
     SINTER
 #### Sorted Set(ZSet)（有序集合）
-    ZADD
+    ZADD ("rank:week", {"Alice": 100, "Bob": 200, "Carol": 150})
     ZREM

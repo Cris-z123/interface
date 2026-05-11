@@ -4,6 +4,9 @@
 ## 核心概念
 
 * Collection: 类似于表
-* Partition: 用于数据逻辑隔离
+* Field: 字段
+* Entity: 实体
+* Partition: 分区，用于数据逻辑隔离
+* Shard: 分片
 * Index: 索引
 * Metric Type: 距离量度

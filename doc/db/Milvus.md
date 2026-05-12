@@ -4,8 +4,8 @@
 ## 核心概念
 
 * Collection: 类似于表
-* Field: 字段
-* Entity: 实体
+* Field: 字段，Primary Key(实体唯一标识)、Vector Field（高维向量）、Scalar Field（结构化数据）
+* Entity: 实体，也就是一条完整记录
 * Partition: 分区，用于数据逻辑隔离
 * Shard: 分片
 * Index: 索引

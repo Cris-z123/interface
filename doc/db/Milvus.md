@@ -9,4 +9,4 @@
 * Partition: 分区，用于数据逻辑隔离，是Collection内部的逻辑数据子集
 * Shard: 分片，是Collection内部的数据量子集
 * Index: 索引
-* Metric Type: 距离量度
+* Metric Type: 距离量度，必须与 Embedding 模型训练时的度量方式一致

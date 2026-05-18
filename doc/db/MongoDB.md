@@ -3,7 +3,7 @@
 以MongoDB为例
 ## 核心概念
 * Database: 库
-* Collection: 集合
-* Document: 文档
+* Collection: 集合，类似表
+* Document: 文档，基本存储单元，BSON格式
 * Field: 字段
-* Index: 索引
+* Index: 索引，单字段索引、复合索引、多键索引

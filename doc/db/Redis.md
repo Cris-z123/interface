@@ -26,3 +26,5 @@
 #### Sorted Set(ZSet)（有序集合）
     ZADD ("rank:week", {"Alice": 100, "Bob": 200, "Carol": 150})
     ZREM
+
+### 常用场景

@@ -27,4 +27,4 @@
     ZADD ("rank:week", {"Alice": 100, "Bob": 200, "Carol": 150})
     ZREM
 
-### 常用场景
+### 适用场景

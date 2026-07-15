@@ -11,7 +11,7 @@
 ## 核心概念
 1. Table: 最基本的存储单元，由行（Row/Record）和列（Column/Field）组成
 2. Schema: 表、视图、索引等对象的逻辑集合，相当于数据库内的"文件夹"
-3. 数据类型：
+3. 数据类型：INTEGER、VARCHAR、DATE、TIMESTAMP、BOOLEAN、JSON、NUMERIC、TEXT、UUID
 4. Key：
 5. Index：高并发B-Tree
 6. View: 视图是存储在数据库中的查询语句，不实际存储数据，每次访问时动态执行

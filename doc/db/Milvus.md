@@ -27,7 +27,7 @@ Attu - 专用可视化数据库管理工具
 * Index: 索引；向量字段必须索引，没建索引的Collection无法搜索
 * Partition: 分区，用于数据逻辑隔离，是Collection内部的逻辑数据子集
 * Shard: 分片，是Collection内部的数据量子集
-* Metric Type: 距离量度，必须与 Embedding 模型训练时的度量方式一致
+* Metric Type: 距离量度，必须与 Embedding 模型训练时的度量方式一致; 欧氏距离（L2）内积（IP）余弦相似度（COSINE）JACCARD（杰卡德距离）HAMMING（汉明距离）BM25（稀疏向量检索）
 
 ### 数据操作
 * Search：向量搜索

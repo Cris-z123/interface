@@ -22,3 +22,4 @@
     多个中断，需要通过中断ID来进行恢复；不要对interrupts使用Try/Except；多个中断使用`add_conditional_edges()`控制，不要循环；
     * Sub Graph：构建一个main graph，sub graph作为一个节点或main graph node里`subgraph.invoke()`调用子图
     * sub graph持久化：1. Per-invocation（default） checkpointer=None 每次调用从空白开始，集成父图的checkpoint，支持interrupt和持久化 2. Per-thread checkpointer=True 状态跨调用累计 3.Stateless checkpointer=False 无checkpoint，不支持中断和持久化
+    * 时间旅行：Replay Fork

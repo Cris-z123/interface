@@ -9,9 +9,9 @@ DCL：数据控制语言-控制数据库权限
 TCL：事务控制语言-数据库事务管理
 
 ### 数据类型
-* int: INT
-* float：DOUBLE
-* string: CHAR VARCHAR BLOB TEXT
+* int: INT、BIGINT TINYINT SMALLINT MEDIUMINT
+* float：DOUBLE、FLOAT、DECIMAL
+* string: VAR CHAR VARCHAR BLOB TEXT SET ENUM
 * time: DATE DATETIME TIMESTAMP
 
 ### 约束
@@ -65,6 +65,25 @@ job in (selcet job from emp where deptno = 10)
 ```sql
 # 相关子查询
 select * from emp e where sal = (select max(sal) from emp where deptno = e.deptno) order by deptno
+```
+
+### 存储过程
+将对数据库的一系列操作，封装成存储过程，供外部调用
+```sql
+# 封装存储过程
+create procedure mypro(name varchar(10))
+begin
+    if name is null or name = "" then
+        select * from emp;\
+    else 
+        select * from emp where ename like concat('%', name, '%')
+    end if;
+end;
+```
+
+```sql
+# 调用存储过程
+call mypro(null)
 ```
 
 ## 核心特性
@@ -121,3 +140,33 @@ commit; # 提交事务
 3. 数据结构极度灵活多变
 4. 社交网络图谱查询（好友的好友）
 5. 时序数据监控（每秒百万传感器数据）
+
+## 范式化设计
+
+### 第一范式
+表内每一列都必须是原子值，不可再分；不能有重复组或多值组
+
+### 第二范式
+满足第一范式的前提下，所以非主键列必须完全依赖整个主键
+
+### 第三范式
+满足第二范式的前提下，所有非主键列不能传递依赖于主键
+
+### 反范式
+* 为了性能和读取效率适当违反对数据库设计范式的要求
+* 为了查询性能，允许存在部分冗余数据
+
+通过slot，提高对数据的并发修改
+
+### 命名规范
+* 可读性
+* 小写字母或数字
+* 不适用复数名词
+* 禁用保留字 desc、match、range
+* 索引命名 pk_xx（主键索引）、uk_xx（唯一索引）、idx_xx（普通索引）等
+
+## 索引
+mySQL的InnoDB引擎支持的索引类型
+    * B+Tree
+    * Hash
+    * 全文索引

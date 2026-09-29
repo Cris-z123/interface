@@ -42,3 +42,8 @@ ADR（Architecture Decision Record）：
 
 ## 案例2：企业知识库RAG系统
 背景: 希望借助大语言模型能力，整合企业知识库，形成统一的业务语言，通过平台化的建设，让应知应会覆盖全员，减轻培训压力的同时，保证业务的合规性和效率
+
+智能体架构:
+    LangGraph_swam: 去中心化网络拓扑结构智能体，多个平级智能体协作
+    LangGraph_supervisor: 集中监督式智能体，一个主智能体+多个子智能体
+    deepAgents: harness
